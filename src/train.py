@@ -161,7 +161,7 @@ def build_advanced_conv_model():
 
     # Use sparse_categorical_crossentropy for integer labels (token positions)
     optimizer = tf.keras.optimizers.Adam(learning_rate=3e-5)
-    model.compile(loss='categorical_crossentropy', optimizer=optimizer)
+    model.compile(loss='sparse_categorical_crossentropy', optimizer=optimizer)
 
     return model
 
@@ -190,17 +190,17 @@ for fold, (idxT, idxV) in enumerate(skf.split(input_ids, train.sentiment.values)
     print("Training start_tokens shape:", start_tokens[idxT].shape)
     print("Training end_tokens shape:", end_tokens[idxT].shape)
 
-    # Ensure start_tokens and end_tokens are integer arrays of shape (batch_size,)
-    start_train = start_tokens[idxT] # Get the index positions of the start token
-    end_train = end_tokens[idxT]      # Get the index positions of the end token
-    start_valid = start_tokens[idxV]
-    end_valid = end_tokens[idxV]
+    # Instead of one-hot, use the index of the start and end tokens as 1D arrays
+    start_train = np.argmax(start_tokens[idxT], axis=1)  # Integer indices for the start tokens
+    end_train = np.argmax(end_tokens[idxT], axis=1)      # Integer indices for the end tokens
+    start_valid = np.argmax(start_tokens[idxV], axis=1)
+    end_valid = np.argmax(end_tokens[idxV], axis=1)
 
     # Print shapes for debugging
-    print("Training start_train shape:", start_train.shape)
-    print("Training end_train shape:", end_train.shape)
+    print("Training start_train shape:", start_train.shape)  # Should now be 1D (batch_size,)
+    print("Training end_train shape:", end_train.shape)      # Same for end tokens
     
-    # ModelCheckpoint callback to save best model during each fold
+    # ModelCheckpoint callback to save the best model during each fold
     sv = tf.keras.callbacks.ModelCheckpoint(
         '%s-roberta-%i.h5' % (VER, fold), monitor='val_loss', verbose=1, save_best_only=True,
         save_weights_only=True, mode='auto', save_freq='epoch'
@@ -211,7 +211,7 @@ for fold, (idxT, idxV) in enumerate(skf.split(input_ids, train.sentiment.values)
     model.fit(
         [input_ids[idxT,], attention_mask[idxT,], token_type_ids[idxT,]],  # Input tensors
         [start_train, end_train],  # Integer token positions
-        epochs=3,  # Increased epochs to 5
+        epochs=3,  # Increased epochs to 3
         batch_size=32,  # Keeping batch size as 32 for efficient training
         verbose=DISPLAY, callbacks=[sv],
         validation_data=([input_ids[idxV,], attention_mask[idxV,], token_type_ids[idxV,]], 
@@ -268,3 +268,4 @@ for fold, (idxT, idxV) in enumerate(skf.split(input_ids, train.sentiment.values)
     jac.append(fold_jaccard)
     print(f'>>>> FOLD {fold + 1} Jaccard =', fold_jaccard)
     print()
+ 
