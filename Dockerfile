@@ -33,4 +33,4 @@ SHELL ["conda", "run", "-n", "senta", "/bin/bash", "-c"]
 EXPOSE 8000
 
 # Run FastAPI app with uvicorn in the Conda environment
-CMD ["conda", "run", "--no-capture-output", "-n", "senta", "uvicorn", "src.app:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["bash", "-c", "source activate senta && uvicorn src.app:app --host 0.0.0.0 --port 8000 --log-level debug"]

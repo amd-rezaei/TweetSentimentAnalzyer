@@ -66,8 +66,10 @@ class TweetSentimentModel:
         return input_ids, attention_mask, token_type_ids
 
     def predict(self, text, sentiment):
+        
         input_ids, attention_mask, token_type_ids = self.preprocess(text, sentiment)
         preds_start, preds_end = self.model.predict([input_ids, attention_mask, token_type_ids], verbose=0)
+        
 
         a = np.argmax(preds_start[0])
         b = np.argmax(preds_end[0])
