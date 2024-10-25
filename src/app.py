@@ -1,16 +1,33 @@
 # app.py
 from fastapi import FastAPI
+from fastapi.responses import HTMLResponse
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from model_inference import TweetSentimentModel
+import os
 
-# Define the request body structure using Pydantic
 class PredictionRequest(BaseModel):
     text: str
+    sentiment: str
 
-# Initialize FastAPI app
 app = FastAPI()
 
-# Load model
+# Enable CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Serve static files from the "static" directory
+@app.get("/", response_class=HTMLResponse)
+async def read_root():
+    with open(os.path.join('../static', 'index.html')) as f:
+        return HTMLResponse(content=f.read(), status_code=200)
+
+# Load the model
 model = TweetSentimentModel(
     model_path='../config/pretrained-roberta-base.h5',
     config_path='../config/config-roberta-base.json',
@@ -19,16 +36,13 @@ model = TweetSentimentModel(
     weights_path='../models/weights_final.h5'
 )
 
-# Define the prediction endpoint
+# Define the /predict endpoint
 @app.post("/predict")
-def predict(request: PredictionRequest):
+async def predict(request: PredictionRequest):
     text = request.text
-    
-    # Make prediction (both selected text and sentiment)
-    selected_text, predicted_sentiment = model.predict(text)
-
+    sentiment = request.sentiment
+    selected_text = model.predict(text, sentiment)
     return {
         'text': text,
-        'selected_text': selected_text,
-        'predicted_sentiment': predicted_sentiment
+        'selected_text': selected_text
     }

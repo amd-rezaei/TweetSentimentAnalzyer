@@ -1,3 +1,5 @@
+
+
 import pandas as pd
 import numpy as np
 import tensorflow as tf
@@ -38,8 +40,8 @@ for k in range(test.shape[0]):
     s_tok = sentiment_id[test.loc[k, 'sentiment']]
     input_ids_t[k, :len(enc.ids) + 5] = [0] + enc.ids + [2, 2] + [s_tok] + [2]
     attention_mask_t[k, :len(enc.ids) + 5] = 1
-
-# Define model architecture (same as training)
+    
+# Modify build_model to include sentiment prediction layer
 def build_model():
     ids = tf.keras.layers.Input((MAX_LEN,), dtype=tf.int32)
     att = tf.keras.layers.Input((MAX_LEN,), dtype=tf.int32)
@@ -60,51 +62,52 @@ def build_model():
     x2 = tf.keras.layers.Flatten()(x2)
     x2 = tf.keras.layers.Activation('softmax')(x2)
 
-    model = tf.keras.models.Model(inputs=[ids, att, tok], outputs=[x1, x2])
+    # Sentiment prediction layer
+    x3 = tf.keras.layers.GlobalAveragePooling1D()(x[0])
+    x3 = tf.keras.layers.Dense(3, activation='softmax', name='sentiment_output')(x3)
+
+    model = tf.keras.models.Model(inputs=[ids, att, tok], outputs=[x1, x2, x3])
     return model
 
-# Load the model
+# Load model with sentiment prediction
 model = build_model()
 model.load_weights(weights_path)
 
-# Make predictions on the test data
+# Predict on test data
 print("Predicting on test data...")
-preds_start, preds_end = model.predict([input_ids_t, attention_mask_t, token_type_ids_t], verbose=1)
+preds_start, preds_end, preds_sentiment = model.predict([input_ids_t, attention_mask_t, token_type_ids_t], verbose=1)
 
-# Post-process predictions to extract selected text and save in required format
+# Process predictions to extract selected text and sentiment
 all_predictions = []
 for k in range(input_ids_t.shape[0]):
-    # Get the start and end token indices
+    # Get the most probable start and end positions
     a = np.argmax(preds_start[k,])
     b = np.argmax(preds_end[k,])
 
-    # Ensure indices are valid
+    # Ensure valid selection of text
     if a > b:
-        st = test.loc[k, 'text']  # Use the original text if indices are invalid
+        selected_text = test.loc[k, 'text']
     else:
-        # Decode the tokens from the input text based on predicted indices
         text1 = " " + " ".join(test.loc[k, 'text'].split())
         enc = tokenizer.encode(text1)
-        
-        # Extend the selection slightly to avoid truncating the end of the text
-        b = min(b + 1, len(enc.ids))  # Extend the end index by 1 token
-        
-        decoded_text = tokenizer.decode(enc.ids[max(a - 1, 0):b]).strip()
-        st = decoded_text
-    
+        b = min(b + 1, len(enc.ids))
+        selected_text = tokenizer.decode(enc.ids[max(a - 1, 0):b]).strip()
 
-    # Collect the relevant information for each test sample
+    # Get the predicted sentiment from preds_sentiment
+    predicted_sentiment_id = np.argmax(preds_sentiment[k])
+    id_to_sentiment = {0: 'positive', 1: 'negative', 2: 'neutral'}
+    predicted_sentiment = id_to_sentiment[predicted_sentiment_id]
+
+    # Collect predictions for each sample
     all_predictions.append({
         'textID': test.loc[k, 'textID'],
         'text': test.loc[k, 'text'],
-        'selected_text': st,
-        'sentiment': test.loc[k, 'sentiment']
+        'selected_text': selected_text,
+        'sentiment': predicted_sentiment  # Use predicted sentiment
     })
 
-# Convert the list of predictions into a DataFrame
+# Convert predictions to DataFrame
 submission_df = pd.DataFrame(all_predictions)
-
-# Save to CSV
 submission_df.to_csv('submission.csv', index=False)
 
 print("Submission file 'submission.csv' created successfully.")

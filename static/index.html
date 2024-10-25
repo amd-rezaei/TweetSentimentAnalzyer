@@ -1,0 +1,123 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tweet Sentiment Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #333;
+        }
+
+        textarea, select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .output {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tweet's Relevant Part Prediction</h1>
+        <textarea id="textInput" placeholder="Enter your tweet text here..."></textarea>
+        <select id="sentimentSelect">
+            <option value="positive">Positive</option>
+            <option value="negative">Negative</option>
+            <option value="neutral">Neutral</option>
+        </select>
+        <button onclick="getPrediction()">Get Prediction</button>
+        <div class="output">
+            <p id="selectedText"></p>
+            <p id="sentiment"></p>
+        </div>
+        <p class="error" id="errorMessage"></p>
+    </div>
+
+    <script>
+        async function getPrediction() {
+            const text = document.getElementById("textInput").value;
+            const sentiment = document.getElementById("sentimentSelect").value;
+            const errorMessage = document.getElementById("errorMessage");
+            const selectedTextElem = document.getElementById("selectedText");
+            const sentimentElem = document.getElementById("sentiment");
+
+            errorMessage.textContent = "";
+            selectedTextElem.textContent = "";
+            sentimentElem.textContent = "";
+
+            if (!text) {
+                errorMessage.textContent = "Please enter some text.";
+                return;
+            }
+
+            try {
+                const response = await fetch('http://127.0.0.1:5000/predict', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ text, sentiment })
+                });
+
+                if (!response.ok) {
+                    throw new Error("Error fetching prediction");
+                }
+
+                const data = await response.json();
+                selectedTextElem.textContent = `Selected Text: ${data.selected_text}`;
+            } catch (error) {
+                errorMessage.textContent = "There was an error getting the prediction. Please try again.";
+            }
+        }
+    </script>
+</body>
+</html>
