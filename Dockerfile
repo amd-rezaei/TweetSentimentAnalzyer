@@ -23,6 +23,14 @@ COPY models /app/models
 COPY src /app/src
 COPY static /app/static
 
+# Set environment variables
+ENV STATIC_DIR=/app/static
+ENV MODEL_PATH=/app/config/pretrained-roberta-base.h5
+ENV CONFIG_PATH=/app/config/config-roberta-base.json
+ENV TOKENIZER_PATH=/app/config/vocab-roberta-base.json
+ENV MERGES_PATH=/app/config/merges-roberta-base.txt
+ENV WEIGHTS_PATH=/app/models/weights_final.h5
+
 # Create the Conda environment
 RUN conda env create -f /app/environment.yml
 

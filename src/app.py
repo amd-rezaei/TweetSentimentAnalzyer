@@ -6,6 +6,16 @@ from pydantic import BaseModel
 from .model_inference import TweetSentimentModel
 import os
 
+# Load paths from environment variables with fallback to default paths
+STATIC_DIR = os.getenv('STATIC_DIR', 'static') 
+
+
+MODEL_PATH = os.getenv('MODEL_PATH', 'config/pretrained-roberta-base.h5')
+CONFIG_PATH = os.getenv('CONFIG_PATH', 'config/config-roberta-base.json')
+TOKENIZER_PATH = os.getenv('TOKENIZER_PATH', 'config/vocab-roberta-base.json')
+MERGES_PATH = os.getenv('MERGES_PATH', 'config/merges-roberta-base.txt')
+WEIGHTS_PATH = os.getenv('WEIGHTS_PATH', 'models/weights_final.h5')
+
 class PredictionRequest(BaseModel):
     text: str
     sentiment: str
@@ -24,18 +34,19 @@ app.add_middleware(
 # Serve static files from the "static" directory
 @app.get("/", response_class=HTMLResponse)
 async def read_root():
-    with open(os.path.join('/app/static', 'index.html')) as f:
+    with open(os.path.join(STATIC_DIR, 'index.html')) as f:
         return HTMLResponse(content=f.read(), status_code=200)
+
+
 
 # Load the model
 model = TweetSentimentModel(
-    model_path='/app/config/pretrained-roberta-base.h5',
-    config_path='/app/config/config-roberta-base.json',
-    tokenizer_path='/app/config/vocab-roberta-base.json',
-    merges_path='/app/config/merges-roberta-base.txt',
-    weights_path='/app/models/weights_final.h5'
+    model_path=MODEL_PATH,
+    config_path=CONFIG_PATH,
+    tokenizer_path=TOKENIZER_PATH,
+    merges_path=MERGES_PATH,
+    weights_path=WEIGHTS_PATH
 )
-
 
 # Define the /predict endpoint
 @app.post("/predict")

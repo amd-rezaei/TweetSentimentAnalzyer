@@ -230,6 +230,8 @@ dependencies:
   - zstd=1.5.6=hc292b87_0
   - uvicorn
   - fastapi
+  - pytest
+  - pytest-benchmark
 
   - pip:
       - filelock==3.16.1
