@@ -196,10 +196,7 @@ dependencies:
   - tensorboard=2.6.0=pyhd8ed1ab_1
   - tensorboard-data-server=0.6.1=py39hd97740a_4
   - tensorboard-plugin-wit=1.8.1=pyhd8ed1ab_0
-  - tensorflow=2.7.0=cuda112py39h01bd6f0_0
-  - tensorflow-base=2.7.0=cuda112py39hd98b2dd_0
-  - tensorflow-estimator=2.7.0=cuda112py39h23446aa_0
-  - tensorflow-gpu=2.7.0=cuda112py39h0bbbad9_0
+  - tensorflow=2.7.0
   - termcolor=2.5.0=pyhd8ed1ab_0
   - terminado=0.18.1=pyh0d859eb_0
   - threadpoolctl=3.5.0=pyhc1e730c_0
@@ -231,6 +228,8 @@ dependencies:
   - zlib=1.2.13=h4ab18f5_6
   - zstandard=0.23.0=py39h08a7858_1
   - zstd=1.5.6=hc292b87_0
+  - uvicorn
+  
   - pip:
       - filelock==3.16.1
       - fsspec==2024.10.0
