@@ -50,18 +50,26 @@ class TweetSentimentModel:
 
         model = tf.keras.models.Model(inputs=[ids, att, tok], outputs=[x1, x2])
         return model
-
+    
     def preprocess(self, text, sentiment):
         input_ids = np.ones((1, self.MAX_LEN), dtype='int32')
         attention_mask = np.zeros((1, self.MAX_LEN), dtype='int32')
         token_type_ids = np.zeros((1, self.MAX_LEN), dtype='int32')
 
+        # Clean and encode the input text
         text = " " + " ".join(text.split())
         enc = self.tokenizer.encode(text)
         
+        # Define the sentiment ID and calculate how much of enc.ids can be used
         sentiment_id = self.sentiment_id[sentiment]
-        input_ids[0, :len(enc.ids) + 5] = [0] + enc.ids + [2, 2] + [sentiment_id] + [2]
-        attention_mask[0, :len(enc.ids) + 5] = 1
+        available_length = self.MAX_LEN - 5  # Reserve space for special tokens
+
+        # Truncate enc.ids if it exceeds the available length
+        token_ids = enc.ids[:available_length]
+
+        # Construct the input with reserved special tokens and sentiment ID
+        input_ids[0, :len(token_ids) + 5] = [0] + token_ids + [2, 2] + [sentiment_id] + [2]
+        attention_mask[0, :len(token_ids) + 5] = 1
 
         return input_ids, attention_mask, token_type_ids
 
