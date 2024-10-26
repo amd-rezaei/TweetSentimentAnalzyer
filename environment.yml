@@ -193,10 +193,7 @@ dependencies:
   - soupsieve=2.5=pyhd8ed1ab_1
   - sqlite=3.45.3=h5eee18b_0
   - stack_data=0.6.2=pyhd8ed1ab_0
-  - tensorboard=2.6.0=pyhd8ed1ab_1
-  - tensorboard-data-server=0.6.1=py39hd97740a_4
-  - tensorboard-plugin-wit=1.8.1=pyhd8ed1ab_0
-  - tensorflow=2.7.0
+  - tensorflow
   - termcolor=2.5.0=pyhd8ed1ab_0
   - terminado=0.18.1=pyh0d859eb_0
   - threadpoolctl=3.5.0=pyhc1e730c_0

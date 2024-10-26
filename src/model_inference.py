@@ -4,6 +4,7 @@ import numpy as np
 import tensorflow as tf
 from transformers import RobertaConfig, TFRobertaModel
 import tokenizers
+from tensorflow.python.compiler.tensorrt import trt_convert as trt
 
 class TweetSentimentModel:
     def __init__(self, model_path, config_path, tokenizer_path, merges_path, weights_path, max_len=96):
@@ -51,6 +52,19 @@ class TweetSentimentModel:
         model = tf.keras.models.Model(inputs=[ids, att, tok], outputs=[x1, x2])
         return model
     
+    def convert_to_tensorrt(self, output_path):
+        # Save the model temporarily in SavedModel format
+        temp_model_dir = 'temp_model_dir'
+        self.model.save(temp_model_dir)
+
+        # Convert the model to TensorRT format
+        converter = trt.TrtGraphConverterV2(input_saved_model_dir=temp_model_dir)
+        converter.convert()
+        
+        # Save the converted TensorRT model
+        converter.save(output_path)
+        print(f"Model saved to {output_path} in TensorRT format")
+
     def preprocess(self, text, sentiment):
         input_ids = np.ones((1, self.MAX_LEN), dtype='int32')
         attention_mask = np.zeros((1, self.MAX_LEN), dtype='int32')
@@ -74,11 +88,9 @@ class TweetSentimentModel:
         return input_ids, attention_mask, token_type_ids
 
     def predict(self, text, sentiment):
-        
         input_ids, attention_mask, token_type_ids = self.preprocess(text, sentiment)
         preds_start, preds_end = self.model.predict([input_ids, attention_mask, token_type_ids], verbose=0)
         
-
         a = np.argmax(preds_start[0])
         b = np.argmax(preds_end[0])
 
