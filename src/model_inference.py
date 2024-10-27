@@ -102,3 +102,6 @@ class TweetSentimentModel:
             selected_text = self.tokenizer.decode(enc.ids[max(a - 1, 0):b]).strip()
 
         return selected_text
+    
+    def get_model(self):
+        return self.model
