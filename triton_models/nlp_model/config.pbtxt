@@ -1,0 +1,50 @@
+name: "nlp_model"
+platform: "tensorrt_plan" 
+max_batch_size: 32
+
+input [
+  {
+    name: "input_1"
+    data_type: TYPE_INT32
+    dims: [ 96 ]
+  },
+  {
+    name: "input_2"
+    data_type: TYPE_INT32
+    dims: [ 96 ]
+  },
+  {
+    name: "input_3"
+    data_type: TYPE_INT32
+    dims: [ 96 ]
+  }
+]
+
+output [
+  {
+    name: "activation"
+    data_type: TYPE_FP32
+    dims: [ 96 ]
+  },
+  {
+    name: "activation_1"
+    data_type: TYPE_FP32
+    dims: [ 96 ]
+  }
+]
+
+instance_group [
+  {
+    kind: KIND_GPU
+  }
+]
+
+optimization {
+  execution_accelerators {
+    gpu_execution_accelerator: [
+      {
+        name : "tensorrt"
+      }
+    ]
+  }
+}

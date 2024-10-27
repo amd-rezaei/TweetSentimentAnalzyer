@@ -1,0 +1,1191 @@
+============================= test session starts ==============================
+platform linux -- Python 3.9.18, pytest-8.3.3, pluggy-1.5.0
+benchmark: 4.0.0 (defaults: timer=time.perf_counter disable_gc=False min_rounds=5 min_time=0.000005 max_time=1.0 calibration_precision=10 warmup=False warmup_iterations=100000)
+rootdir: /home/amd/Projects/TweetSentimentExtractor
+configfile: pytest.ini
+plugins: anyio-4.6.2.post1, benchmark-4.0.0
+collected 17 items
+
+tests/test_app.py::test_predict_positive 
+-------------------------------- live log call ---------------------------------
+INFO     uvicorn:app.py:113 Prediction took 0.7998 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+PASSED                                                                   [  5%]
+tests/test_app.py::test_predict_negative 
+-------------------------------- live log call ---------------------------------
+INFO     uvicorn:app.py:113 Prediction took 0.0194 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+PASSED                                                                   [ 11%]
+tests/test_benchmark.py::test_predict_latency[payload0] 
+-------------------------------- live log call ---------------------------------
+INFO     uvicorn:app.py:113 Prediction took 0.0118 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0200 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0110 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0112 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0115 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0118 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0109 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0111 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0112 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0112 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0129 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0122 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0118 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0116 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0120 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0116 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0112 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0113 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0110 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0115 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0104 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0102 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0109 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0112 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0115 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0109 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0104 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0100 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0109 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0110 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0104 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0115 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0118 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0103 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0101 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0108 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0108 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0113 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0100 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0102 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0108 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0117 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0109 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0111 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0117 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0188 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0104 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0110 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0128 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0112 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0103 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+PASSED                                                                   [ 17%]
+tests/test_integration.py::test_root_endpoint 
+-------------------------------- live log call ---------------------------------
+INFO     httpx:_client.py:1038 HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+PASSED                                                                   [ 23%]
+tests/test_integration.py::test_predict_endpoint 
+-------------------------------- live log call ---------------------------------
+INFO     uvicorn:app.py:113 Prediction took 0.0112 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+PASSED                                                                   [ 29%]
+tests/test_integration.py::test_predict_empty_text 
+-------------------------------- live log call ---------------------------------
+INFO     uvicorn:app.py:113 Prediction took 0.0103 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+PASSED                                                                   [ 35%]
+tests/test_load.py::test_predict_load[request_payload0] 
+-------------------------------- live log call ---------------------------------
+INFO     uvicorn:app.py:113 Prediction took 0.0100 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0110 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0102 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0117 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0104 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0104 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0108 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0114 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0099 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0104 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0115 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0114 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0104 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0109 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0109 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0109 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0112 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0104 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0113 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0109 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0111 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0499 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0103 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0109 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0108 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0104 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0108 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0104 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0108 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0100 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0104 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0104 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0104 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0108 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0097 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0101 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0103 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0114 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0112 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0111 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0112 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0116 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0108 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0125 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0110 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0153 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0118 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0108 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0103 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0102 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+PASSED                                                                   [ 41%]
+tests/test_load.py::test_predict_load[request_payload1] 
+-------------------------------- live log call ---------------------------------
+INFO     uvicorn:app.py:113 Prediction took 0.0100 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0114 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0108 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0117 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0103 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0114 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0104 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0103 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0099 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0116 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0101 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0113 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0103 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0104 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0104 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0110 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0113 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0111 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0108 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0113 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0111 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0112 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0102 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0103 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0111 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0110 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0109 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0108 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0102 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0120 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0103 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0115 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0116 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0110 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0102 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0109 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0115 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0110 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0112 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0101 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0110 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0103 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0110 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0112 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0108 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0104 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0113 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0121 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0125 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0112 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0108 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0111 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0114 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0493 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+PASSED                                                                   [ 47%]
+tests/test_load.py::test_predict_load[request_payload2] 
+-------------------------------- live log call ---------------------------------
+INFO     uvicorn:app.py:113 Prediction took 0.0111 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0104 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0104 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.1258 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0108 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0110 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0103 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0110 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0110 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0193 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0115 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0102 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0108 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0113 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0113 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0108 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0111 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0101 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0111 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0116 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0109 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0112 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0109 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0108 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0108 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0108 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0101 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0111 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0108 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0104 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0109 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0108 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0104 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0112 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0110 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0099 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0103 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0108 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0113 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0115 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0104 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0110 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0109 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0113 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0111 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0102 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0115 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0101 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0103 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0110 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0112 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0113 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0111 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0109 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+PASSED                                                                   [ 52%]
+tests/test_load.py::test_predict_load[request_payload3] 
+-------------------------------- live log call ---------------------------------
+INFO     uvicorn:app.py:113 Prediction took 0.0104 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0108 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0112 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0109 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0103 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0103 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0102 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0111 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0109 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0109 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0108 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0109 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0112 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0111 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0100 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0109 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0112 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0109 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0104 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0110 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0109 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0098 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0110 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0103 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0108 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0114 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0102 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0104 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0099 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0098 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0095 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0099 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0101 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0103 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0101 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0101 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0104 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0102 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0103 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0103 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0104 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0099 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0099 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0101 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0113 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0209 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0108 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0109 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0102 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0103 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0111 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0119 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0117 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0125 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0111 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0108 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0116 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0115 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0109 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0110 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0108 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+PASSED                                                                   [ 58%]
+tests/test_load.py::test_predict_load[request_payload4] 
+-------------------------------- live log call ---------------------------------
+INFO     uvicorn:app.py:113 Prediction took 0.0111 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0114 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0115 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0118 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0114 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0112 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0112 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0111 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0109 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0118 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0111 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0099 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0102 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0098 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0108 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0104 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0103 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0101 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0108 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0099 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0109 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0109 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0103 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0104 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0102 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0111 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0104 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0111 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0104 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0103 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0108 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0108 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0103 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0100 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0104 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0109 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0109 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0101 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0100 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0109 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0104 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0104 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0108 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0103 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0209 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0121 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0111 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0113 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0111 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0146 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0113 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0112 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0112 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0110 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0103 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0109 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0111 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+PASSED                                                                   [ 64%]
+tests/test_load.py::test_predict_load[request_payload5] 
+-------------------------------- live log call ---------------------------------
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0109 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0110 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0110 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0108 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0109 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0100 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0110 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0099 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0103 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0103 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0561 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0102 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0104 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0104 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0101 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0101 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0116 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0110 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0110 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0115 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0109 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0109 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0112 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0123 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0104 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0100 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0109 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0104 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0110 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0103 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0103 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0110 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0111 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0103 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0100 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0103 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0102 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0103 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0099 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0100 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0108 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0098 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0116 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0112 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0101 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0104 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0109 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0110 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0104 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0098 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0108 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0104 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0107 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0099 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0104 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0100 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0101 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:app.py:113 Prediction took 0.0110 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+PASSED                                                                   [ 70%]
+tests/test_units.py::test_predict[I love this!-positive-love] PASSED     [ 76%]
+tests/test_units.py::test_predict[This is terrible.-negative-terrible] PASSED [ 82%]
+tests/test_units.py::test_predict[It's okay, nothing special.-neutral-okay] PASSED [ 88%]
+tests/test_units.py::test_predict[-positive-] PASSED                     [ 94%]
+tests/test_units.py::test_predict[This product is amazing!-invalid_sentiment-None] PASSED [100%]
+
+
+------------------------------------------------------------------------------------- benchmark 'load_test': 6 tests ------------------------------------------------------------------------------------
+Name (time in ms)                           Min                 Max               Mean             StdDev             Median               IQR            Outliers      OPS            Rounds  Iterations
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+test_predict_load[request_payload3]     11.5200 (1.0)       23.7911 (1.01)     12.9241 (1.0)       1.3698 (1.0)      12.6886 (1.00)     0.8108 (1.27)          3;2  77.3750 (1.0)          82           1
+test_predict_load[request_payload4]     11.8298 (1.03)      23.5373 (1.0)      13.1340 (1.02)      1.4518 (1.06)     12.8532 (1.02)     0.9143 (1.43)          3;2  76.1384 (0.98)         74           1
+test_predict_load[request_payload5]     11.7107 (1.02)      58.1019 (2.47)     13.3220 (1.03)      5.1393 (3.75)     12.6413 (1.0)      0.8007 (1.25)          1;3  75.0636 (0.97)         79           1
+test_predict_load[request_payload0]     11.7323 (1.02)      51.8712 (2.20)     13.4081 (1.04)      4.3200 (3.15)     12.8416 (1.02)     0.6811 (1.07)          2;4  74.5816 (0.96)         84           1
+test_predict_load[request_payload1]     11.8385 (1.03)      51.6781 (2.20)     13.4785 (1.04)      4.4269 (3.23)     12.8548 (1.02)     0.8152 (1.28)          1;4  74.1924 (0.96)         78           1
+test_predict_load[request_payload2]     11.6889 (1.01)     128.8907 (5.48)     14.5711 (1.13)     13.3370 (9.74)     12.8995 (1.02)     0.6390 (1.0)           1;4  68.6289 (0.89)         76           1
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+----------------------------------------- benchmark 'prediction_latency': 1 tests ------------------------------------------
+Name (time in ms)                      Min      Max     Mean  StdDev   Median     IQR  Outliers      OPS  Rounds  Iterations
+----------------------------------------------------------------------------------------------------------------------------
+test_predict_latency[payload0]     11.8532  22.4922  13.3644  1.6092  13.0504  0.9229       3;3  74.8259      68           1
+----------------------------------------------------------------------------------------------------------------------------
+
+Legend:
+  Outliers: 1 Standard Deviation from Mean; 1.5 IQR (InterQuartile Range) from 1st Quartile and 3rd Quartile.
+  OPS: Operations Per Second, computed as 1 / Mean
+============================= 17 passed in 20.85s ==============================

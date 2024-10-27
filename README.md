@@ -17,6 +17,7 @@ A FastAPI-based web service that deploys a pre-trained sentiment extraction mode
   - [Endpoints](#endpoints)
   - [Example Request](#example-request)
 - [Testing](#testing)
+- [Triton Deployment](#triton-deployment)
 - [Optimization and Performance](#optimization-and-performance)
 - [License](#license)
 
@@ -118,6 +119,18 @@ curl -X POST "http://localhost:8000/predict" \
 
 2. **Test Docker Image**:
    Ensure the Docker container is running and test with an HTTP request as shown in the example above.
+
+## Triton Deployment
+
+1. **Setup App and ONNX**:
+   Use util for conversion to ONNX format model. Next run app and static file on 8003. Pull and run the following for the Triton deployment.
+
+2. **Deploy**:
+   ```bash
+   docker pull nvcr.io/nvidia/tritonserver:23.03-py3
+
+   docker run --gpus all --rm --shm-size=1g --ulimit memlock=-1 --ulimit stack=67108864   -p 8000:8000 -p 8001:8001 -p 8002:8002   -v $(pwd)/triton_models:/models nvcr.io/nvidia/tritonserver:23.03-py3   tritonserver --model-repository=/models
+   ```
 
 ## Optimization and Performance
 - **Latency Measurement**: The `/predict` endpoint logs latency by measuring the time taken for prediction.
