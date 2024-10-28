@@ -82,8 +82,19 @@
     </div>
 
     <script>
-        // Determine the API URL based on environment variable or default port
-        const apiUrl = window.location.href.includes("8003") ? "http://127.0.0.1:8003/predict" : "http://127.0.0.1:8000/predict";
+        // Determine the API URL based on the current host and port
+        let apiUrl;
+
+        if (window.location.href.includes("9001")) {
+            // Encapsulated FastAPI running on port 9001
+            apiUrl = "http://127.0.0.1:9001/predict";
+        } else if (window.location.href.includes("9000")) {
+            // Triton FastAPI client running on port 9000
+            apiUrl = "http://127.0.0.1:9000/predict";
+        } else {
+            // Default or unknown case, fallback to a default
+            apiUrl = "http://127.0.0.1:8000/predict";
+        }
 
         async function getPrediction() {
             const text = document.getElementById("textInput").value;

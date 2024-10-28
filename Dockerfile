@@ -26,7 +26,7 @@ COPY models /app/models
 COPY src /app/src
 COPY static /app/static
 COPY triton_models /app/triton_models
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY start_services.sh /app/start_services.sh
 
 # Set environment variables
 ENV STATIC_DIR=/app/static \
@@ -39,5 +39,5 @@ ENV STATIC_DIR=/app/static \
 # Expose ports for both FastAPI and Triton
 EXPOSE 8000 8001 8002 9000 9001
 
-# Start supervisord to manage multiple services
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+# Start services using the custom startup script
+CMD ["/bin/bash", "/app/start_services.sh"]

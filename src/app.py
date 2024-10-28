@@ -1,7 +1,7 @@
 import os
 
 # Determine the deployment type based on the DEPLOYMENT_TYPE environment variable
-DEPLOYMENT_TYPE = os.getenv("DEPLOYMENT_TYPE", "docker").lower()
+DEPLOYMENT_TYPE = os.getenv("DEPLOYMENT_TYPE", "encapsulated").lower()
 
 # Import the correct app module based on DEPLOYMENT_TYPE
 if DEPLOYMENT_TYPE == "triton":

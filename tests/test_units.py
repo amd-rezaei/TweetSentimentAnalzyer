@@ -4,7 +4,7 @@ from fastapi.testclient import TestClient
 from src.app import app
 
 client = TestClient(app)
-DEPLOYMENT_TYPE = os.getenv("DEPLOYMENT_TYPE", "docker").lower()
+DEPLOYMENT_TYPE = os.getenv("DEPLOYMENT_TYPE", "encapsulated").lower()
 
 @pytest.mark.parametrize("text,sentiment,expected", [
     ("I love this!", "positive", "love"),
