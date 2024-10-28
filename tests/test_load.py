@@ -1,9 +1,10 @@
-# tests/test_load.py
+import os
 import pytest
 from fastapi.testclient import TestClient
 from src.app import app
 
 client = TestClient(app)
+# DEPLOYMENT_TYPE = os.getenv("DEPLOYMENT_TYPE", "docker").lower()
 
 sample_requests = [
     {"text": "I love this product!", "sentiment": "positive"},
@@ -14,7 +15,6 @@ sample_requests = [
     {"text": "I absolutely adore how this product makes my life easier!" * 10, "sentiment": "positive"},
 ]
 
-
 @pytest.mark.parametrize("request_payload", sample_requests)
 @pytest.mark.benchmark(group="load_test")
 def test_predict_load(request_payload, benchmark):
@@ -23,5 +23,3 @@ def test_predict_load(request_payload, benchmark):
         response = client.post("/predict", json=request_payload)
         assert response.status_code == 200
         assert "selected_text" in response.json()
-
-
