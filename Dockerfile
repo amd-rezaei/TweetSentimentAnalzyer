@@ -1,8 +1,8 @@
 # Base image with Triton server and Python 3
 FROM nvcr.io/nvidia/tritonserver:23.03-py3
 
-# Install system dependencies and Miniconda
-RUN apt-get update && apt-get install -y wget supervisor && \
+# Install system dependencies, netcat, and Miniconda
+RUN apt-get update && apt-get install -y wget supervisor netcat && \
     wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh && \
     bash Miniconda3-latest-Linux-x86_64.sh -b -p /opt/conda && \
     rm Miniconda3-latest-Linux-x86_64.sh && \
@@ -26,7 +26,9 @@ COPY models /app/models
 COPY src /app/src
 COPY static /app/static
 COPY triton_models /app/triton_models
+COPY pytest.ini /app/pytest.ini
 COPY start_services.sh /app/start_services.sh
+
 
 # Set environment variables
 ENV STATIC_DIR=/app/static \
