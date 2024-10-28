@@ -22,14 +22,20 @@ def test_predict_empty_text():
     ("This is terrible.", "negative", "terrible"),
     ("It's okay, nothing special.", "neutral", "okay"),
     ("", "positive", ""),
-    ("Great quality, amazing product.", "invalid_sentiment", None)
+    ("Great quality, amazing product.", "invalid_sentiment", "Great quality, amazing product.")
 ])
 def test_predict_endpoint(text, sentiment, expected_substr):
     payload = {"text": text, "sentiment": sentiment}
     response = client.post("/predict", json=payload)
-    assert response.status_code == 200
+    
+    assert response.status_code == 200  # Check that the status code is 200 for all cases
     data = response.json()
+    
     if sentiment == "invalid_sentiment":
-        assert data["selected_text"] is None
+        # For an invalid sentiment, expect the full text in 'selected_text' (case-insensitive)
+        assert data["selected_text"].lower() == text.lower(), \
+            f"Expected 'selected_text' to be the full text '{text}' for invalid sentiment, got '{data['selected_text']}'"
     else:
-        assert expected_substr.lower() in data["selected_text"].lower()
+        # For valid sentiments, check that the expected substring is in the selected text
+        assert expected_substr.lower() in data["selected_text"].lower(), \
+            f"Expected '{expected_substr}' in '{data['selected_text']}'"

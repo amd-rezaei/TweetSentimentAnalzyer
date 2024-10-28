@@ -1,0 +1,468 @@
+============================= test session starts ==============================
+platform linux -- Python 3.9.18, pytest-8.3.3, pluggy-1.5.0
+benchmark: 4.0.0 (defaults: timer=time.perf_counter disable_gc=False min_rounds=5 min_time=0.000005 max_time=1.0 calibration_precision=10 warmup=False warmup_iterations=100000)
+rootdir: /home/amd/Projects/TweetSentimentExtractor
+configfile: pytest.ini
+plugins: anyio-4.6.2.post1, benchmark-4.0.0
+collected 16 items
+
+tests/test_benchmark.py::test_predict_latency 
+-------------------------------- live log call ---------------------------------
+INFO     uvicorn:tf_app.py:68 Prediction took 1.5866 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0910 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0896 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0903 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0980 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0931 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0931 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+PASSED                                                                   [  6%]
+tests/test_benchmark.py::test_predict_load[short_text_positive] 
+-------------------------------- live log call ---------------------------------
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1009 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0945 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0920 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0894 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0862 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0903 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0909 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1021 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0913 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0941 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+PASSED                                                                   [ 12%]
+tests/test_benchmark.py::test_predict_load[short_text_negative] 
+-------------------------------- live log call ---------------------------------
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0899 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1353 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0897 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1117 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1061 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1720 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0986 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1027 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0779 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0681 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+PASSED                                                                   [ 18%]
+tests/test_benchmark.py::test_predict_load[long_text_positive] 
+-------------------------------- live log call ---------------------------------
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0690 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0639 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0652 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0656 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0652 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0634 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0636 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0636 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0610 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0612 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+PASSED                                                                   [ 25%]
+tests/test_benchmark.py::test_predict_load[short_text_neutral] 
+-------------------------------- live log call ---------------------------------
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0652 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0644 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0619 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0633 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0648 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0648 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0621 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0661 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0628 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0610 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+PASSED                                                                   [ 31%]
+tests/test_integration.py::test_root_endpoint 
+-------------------------------- live log call ---------------------------------
+INFO     httpx:_client.py:1038 HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+PASSED                                                                   [ 37%]
+tests/test_integration.py::test_predict_empty_text 
+-------------------------------- live log call ---------------------------------
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0634 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+PASSED                                                                   [ 43%]
+tests/test_integration.py::test_predict_endpoint[I love this!-positive-love] 
+-------------------------------- live log call ---------------------------------
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0621 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+PASSED                                                                   [ 50%]
+tests/test_integration.py::test_predict_endpoint[This is terrible.-negative-terrible] 
+-------------------------------- live log call ---------------------------------
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0633 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+PASSED                                                                   [ 56%]
+tests/test_integration.py::test_predict_endpoint[It's okay, nothing special.-neutral-okay] 
+-------------------------------- live log call ---------------------------------
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0659 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+PASSED                                                                   [ 62%]
+tests/test_integration.py::test_predict_endpoint[-positive-] 
+-------------------------------- live log call ---------------------------------
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0647 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+PASSED                                                                   [ 68%]
+tests/test_integration.py::test_predict_endpoint[Great quality, amazing product.-invalid_sentiment-Great quality, amazing product.] 
+-------------------------------- live log call ---------------------------------
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0598 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+FAILED                                                                   [ 75%]
+tests/test_tensorflow.py::test_model_loading PASSED                      [ 81%]
+tests/test_tensorflow.py::test_tensorflow_predict FAILED                 [ 87%]
+tests/test_triton.py::test_triton_preprocessing SKIPPED (Only for Tr...) [ 93%]
+tests/test_triton.py::test_triton_predict_endpoint SKIPPED (Only for...) [100%]
+
+=================================== FAILURES ===================================
+_ test_predict_endpoint[Great quality, amazing product.-invalid_sentiment-Great quality, amazing product.] _
+
+text = 'Great quality, amazing product.', sentiment = 'invalid_sentiment'
+expected_substr = 'Great quality, amazing product.'
+
+    @pytest.mark.parametrize("text, sentiment, expected_substr", [
+        ("I love this!", "positive", "love"),
+        ("This is terrible.", "negative", "terrible"),
+        ("It's okay, nothing special.", "neutral", "okay"),
+        ("", "positive", ""),
+        ("Great quality, amazing product.", "invalid_sentiment", "Great quality, amazing product.")
+    ])
+    def test_predict_endpoint(text, sentiment, expected_substr):
+        payload = {"text": text, "sentiment": sentiment}
+        response = client.post("/predict", json=payload)
+    
+        assert response.status_code == 200  # Check that the status code is 200 for all cases
+        data = response.json()
+    
+        if sentiment == "invalid_sentiment":
+            # For an invalid sentiment, expect the full text in 'selected_text' (case-insensitive)
+>           assert data["selected_text"].lower() == text.lower(), \
+                f"Expected 'selected_text' to be the full text '{text}' for invalid sentiment, got '{data['selected_text']}'"
+E           AssertionError: Expected 'selected_text' to be the full text 'Great quality, amazing product.' for invalid sentiment, got 'great quality, amazing product'
+E           assert 'great qualit...azing product' == 'great qualit...zing product.'
+E             
+E             - great quality, amazing product.
+E             ?                               -
+E             + great quality, amazing product
+
+tests/test_integration.py:36: AssertionError
+------------------------------ Captured log call -------------------------------
+INFO     uvicorn:tf_app.py:68 Prediction took 0.0598 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+___________________________ test_tensorflow_predict ____________________________
+
+response = <Response [401]>, endpoint_name = None
+
+    def hf_raise_for_status(response: Response, endpoint_name: Optional[str] = None) -> None:
+        """
+        Internal version of `response.raise_for_status()` that will refine a
+        potential HTTPError. Raised exception will be an instance of `HfHubHTTPError`.
+    
+        This helper is meant to be the unique method to raise_for_status when making a call
+        to the Hugging Face Hub.
+    
+    
+        Example:
+        ```py
+            import requests
+            from huggingface_hub.utils import get_session, hf_raise_for_status, HfHubHTTPError
+    
+            response = get_session().post(...)
+            try:
+                hf_raise_for_status(response)
+            except HfHubHTTPError as e:
+                print(str(e)) # formatted message
+                e.request_id, e.server_message # details returned by server
+    
+                # Complete the error message with additional information once it's raised
+                e.append_to_message("\n`create_commit` expects the repository to exist.")
+                raise
+        ```
+    
+        Args:
+            response (`Response`):
+                Response from the server.
+            endpoint_name (`str`, *optional*):
+                Name of the endpoint that has been called. If provided, the error message
+                will be more complete.
+    
+        <Tip warning={true}>
+    
+        Raises when the request has failed:
+    
+            - [`~utils.RepositoryNotFoundError`]
+                If the repository to download from cannot be found. This may be because it
+                doesn't exist, because `repo_type` is not set correctly, or because the repo
+                is `private` and you do not have access.
+            - [`~utils.GatedRepoError`]
+                If the repository exists but is gated and the user is not on the authorized
+                list.
+            - [`~utils.RevisionNotFoundError`]
+                If the repository exists but the revision couldn't be find.
+            - [`~utils.EntryNotFoundError`]
+                If the repository exists but the entry (e.g. the requested file) couldn't be
+                find.
+            - [`~utils.BadRequestError`]
+                If request failed with a HTTP 400 BadRequest error.
+            - [`~utils.HfHubHTTPError`]
+                If request failed for a reason not listed above.
+    
+        </Tip>
+        """
+        try:
+>           response.raise_for_status()
+
+../../miniconda3/envs/senta/lib/python3.9/site-packages/huggingface_hub/utils/_http.py:406: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Response [401]>
+
+    def raise_for_status(self):
+        """Raises :class:`HTTPError`, if one occurred."""
+    
+        http_error_msg = ""
+        if isinstance(self.reason, bytes):
+            # We attempt to decode utf-8 first because some servers
+            # choose to localize their reason strings. If the string
+            # isn't utf-8, we fall back to iso-8859-1 for all other
+            # encodings. (See PR #3538)
+            try:
+                reason = self.reason.decode("utf-8")
+            except UnicodeDecodeError:
+                reason = self.reason.decode("iso-8859-1")
+        else:
+            reason = self.reason
+    
+        if 400 <= self.status_code < 500:
+            http_error_msg = (
+                f"{self.status_code} Client Error: {reason} for url: {self.url}"
+            )
+    
+        elif 500 <= self.status_code < 600:
+            http_error_msg = (
+                f"{self.status_code} Server Error: {reason} for url: {self.url}"
+            )
+    
+        if http_error_msg:
+>           raise HTTPError(http_error_msg, response=self)
+E           requests.exceptions.HTTPError: 401 Client Error: Unauthorized for url: https://huggingface.co/api/models/None/tree/main?recursive=True&expand=False
+
+../../miniconda3/envs/senta/lib/python3.9/site-packages/requests/models.py:1024: HTTPError
+
+The above exception was the direct cause of the following exception:
+
+    @pytest.mark.skipif(os.getenv("DEPLOYMENT_TYPE") == "triton", reason="Only for TensorFlow deployment")
+    def test_tensorflow_predict():
+>       model = TweetSentimentModel(
+            model_path=os.getenv("MODEL_PATH"),
+            config_path=os.getenv("CONFIG_PATH"),
+            tokenizer_path=os.getenv("TOKENIZER_PATH"),
+            merges_path=os.getenv("MERGES_PATH"),
+            weights_path=os.getenv("WEIGHTS_PATH")
+        )
+
+tests/test_tensorflow.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/model_inference.py:21: in __init__
+    self.model = self.build_model()
+src/model_inference.py:29: in build_model
+    config = RobertaConfig.from_pretrained(self.config_path)
+../../miniconda3/envs/senta/lib/python3.9/site-packages/transformers/configuration_utils.py:503: in from_pretrained
+    config_dict, kwargs = cls.get_config_dict(pretrained_model_name_or_path, **kwargs)
+../../miniconda3/envs/senta/lib/python3.9/site-packages/transformers/configuration_utils.py:552: in get_config_dict
+    configuration_file = get_configuration_file(
+../../miniconda3/envs/senta/lib/python3.9/site-packages/transformers/configuration_utils.py:843: in get_configuration_file
+    all_files = get_list_of_files(
+../../miniconda3/envs/senta/lib/python3.9/site-packages/transformers/file_utils.py:2103: in get_list_of_files
+    return list_repo_files(path_or_repo, revision=revision, token=token)
+../../miniconda3/envs/senta/lib/python3.9/site-packages/huggingface_hub/utils/_validators.py:114: in _inner_fn
+    return fn(*args, **kwargs)
+../../miniconda3/envs/senta/lib/python3.9/site-packages/huggingface_hub/hf_api.py:2935: in list_repo_files
+    return [
+../../miniconda3/envs/senta/lib/python3.9/site-packages/huggingface_hub/hf_api.py:2935: in <listcomp>
+    return [
+../../miniconda3/envs/senta/lib/python3.9/site-packages/huggingface_hub/hf_api.py:3072: in list_repo_tree
+    for path_info in paginate(path=tree_url, headers=headers, params={"recursive": recursive, "expand": expand}):
+../../miniconda3/envs/senta/lib/python3.9/site-packages/huggingface_hub/utils/_pagination.py:37: in paginate
+    hf_raise_for_status(r)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+response = <Response [401]>, endpoint_name = None
+
+    def hf_raise_for_status(response: Response, endpoint_name: Optional[str] = None) -> None:
+        """
+        Internal version of `response.raise_for_status()` that will refine a
+        potential HTTPError. Raised exception will be an instance of `HfHubHTTPError`.
+    
+        This helper is meant to be the unique method to raise_for_status when making a call
+        to the Hugging Face Hub.
+    
+    
+        Example:
+        ```py
+            import requests
+            from huggingface_hub.utils import get_session, hf_raise_for_status, HfHubHTTPError
+    
+            response = get_session().post(...)
+            try:
+                hf_raise_for_status(response)
+            except HfHubHTTPError as e:
+                print(str(e)) # formatted message
+                e.request_id, e.server_message # details returned by server
+    
+                # Complete the error message with additional information once it's raised
+                e.append_to_message("\n`create_commit` expects the repository to exist.")
+                raise
+        ```
+    
+        Args:
+            response (`Response`):
+                Response from the server.
+            endpoint_name (`str`, *optional*):
+                Name of the endpoint that has been called. If provided, the error message
+                will be more complete.
+    
+        <Tip warning={true}>
+    
+        Raises when the request has failed:
+    
+            - [`~utils.RepositoryNotFoundError`]
+                If the repository to download from cannot be found. This may be because it
+                doesn't exist, because `repo_type` is not set correctly, or because the repo
+                is `private` and you do not have access.
+            - [`~utils.GatedRepoError`]
+                If the repository exists but is gated and the user is not on the authorized
+                list.
+            - [`~utils.RevisionNotFoundError`]
+                If the repository exists but the revision couldn't be find.
+            - [`~utils.EntryNotFoundError`]
+                If the repository exists but the entry (e.g. the requested file) couldn't be
+                find.
+            - [`~utils.BadRequestError`]
+                If request failed with a HTTP 400 BadRequest error.
+            - [`~utils.HfHubHTTPError`]
+                If request failed for a reason not listed above.
+    
+        </Tip>
+        """
+        try:
+            response.raise_for_status()
+        except HTTPError as e:
+            error_code = response.headers.get("X-Error-Code")
+            error_message = response.headers.get("X-Error-Message")
+    
+            if error_code == "RevisionNotFound":
+                message = f"{response.status_code} Client Error." + "\n\n" + f"Revision Not Found for url: {response.url}."
+                raise _format(RevisionNotFoundError, message, response) from e
+    
+            elif error_code == "EntryNotFound":
+                message = f"{response.status_code} Client Error." + "\n\n" + f"Entry Not Found for url: {response.url}."
+                raise _format(EntryNotFoundError, message, response) from e
+    
+            elif error_code == "GatedRepo":
+                message = (
+                    f"{response.status_code} Client Error." + "\n\n" + f"Cannot access gated repo for url {response.url}."
+                )
+                raise _format(GatedRepoError, message, response) from e
+    
+            elif error_message == "Access to this resource is disabled.":
+                message = (
+                    f"{response.status_code} Client Error."
+                    + "\n\n"
+                    + f"Cannot access repository for url {response.url}."
+                    + "\n"
+                    + "Access to this resource is disabled."
+                )
+                raise _format(DisabledRepoError, message, response) from e
+    
+            elif error_code == "RepoNotFound" or (
+                response.status_code == 401
+                and response.request is not None
+                and response.request.url is not None
+                and REPO_API_REGEX.search(response.request.url) is not None
+            ):
+                # 401 is misleading as it is returned for:
+                #    - private and gated repos if user is not authenticated
+                #    - missing repos
+                # => for now, we process them as `RepoNotFound` anyway.
+                # See https://gist.github.com/Wauplin/46c27ad266b15998ce56a6603796f0b9
+                message = (
+                    f"{response.status_code} Client Error."
+                    + "\n\n"
+                    + f"Repository Not Found for url: {response.url}."
+                    + "\nPlease make sure you specified the correct `repo_id` and"
+                    " `repo_type`.\nIf you are trying to access a private or gated repo,"
+                    " make sure you are authenticated."
+                )
+>               raise _format(RepositoryNotFoundError, message, response) from e
+E               huggingface_hub.errors.RepositoryNotFoundError: 401 Client Error. (Request ID: Root=1-671fdb44-0b6e082d31452f921c812061;57355bb6-4f44-40fe-9f0d-640db98c321a)
+E               
+E               Repository Not Found for url: https://huggingface.co/api/models/None/tree/main?recursive=True&expand=False.
+E               Please make sure you specified the correct `repo_id` and `repo_type`.
+E               If you are trying to access a private or gated repo, make sure you are authenticated.
+E               Invalid username or password.
+
+../../miniconda3/envs/senta/lib/python3.9/site-packages/huggingface_hub/utils/_http.py:454: RepositoryNotFoundError
+
+---------------------------------------------------------------------------------------- benchmark 'load_test': 4 tests ---------------------------------------------------------------------------------------
+Name (time in ms)                              Min                 Max                Mean             StdDev              Median                IQR            Outliers      OPS            Rounds  Iterations
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+test_predict_load[short_text_neutral]      63.3470 (1.00)      68.6938 (1.0)       66.1742 (1.0)       1.6848 (1.0)       66.4963 (1.00)      2.8472 (1.36)          2;0  15.1116 (1.0)          10           1
+test_predict_load[long_text_positive]      63.2789 (1.0)       71.6002 (1.04)      66.7207 (1.01)      2.4039 (1.43)      66.2160 (1.0)       2.0940 (1.0)           3;1  14.9879 (0.99)         10           1
+test_predict_load[short_text_positive]     88.5670 (1.40)     104.5531 (1.52)      95.5484 (1.44)      4.9454 (2.94)      93.9846 (1.42)      4.1144 (1.96)          3;2  10.4659 (0.69)         10           1
+test_predict_load[short_text_negative]     70.6501 (1.12)     174.8928 (2.55)     107.6879 (1.63)     30.0353 (17.83)    103.2626 (1.56)     21.9567 (10.49)         3;1   9.2861 (0.61)         10           1
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--------------------------------------- benchmark 'predict_latency': 1 tests --------------------------------------
+Name (time in ms)            Min       Max     Mean  StdDev   Median     IQR  Outliers      OPS  Rounds  Iterations
+-------------------------------------------------------------------------------------------------------------------
+test_predict_latency     91.9293  100.7549  94.9369  3.5978  93.4554  4.7617       1;0  10.5333       5           1
+-------------------------------------------------------------------------------------------------------------------
+
+Legend:
+  Outliers: 1 Standard Deviation from Mean; 1.5 IQR (InterQuartile Range) from 1st Quartile and 3rd Quartile.
+  OPS: Operations Per Second, computed as 1 / Mean
+=========================== short test summary info ============================
+FAILED tests/test_integration.py::test_predict_endpoint[Great quality, amazing product.-invalid_sentiment-Great quality, amazing product.]
+FAILED tests/test_tensorflow.py::test_tensorflow_predict - huggingface_hub.er...
+=================== 2 failed, 12 passed, 2 skipped in 21.07s ===================
