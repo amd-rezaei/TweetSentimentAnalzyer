@@ -10,11 +10,14 @@ import logging
 import tritonclient.http as httpclient
 import numpy as np
 
+from .utils import get_selected_text_from_logits, preprocess_text
+
 # Triton server configuration
 STATIC_DIR = os.getenv('STATIC_DIR', 'static')
 TRITON_URL = os.getenv("TRITON_URL", "localhost:8000")
 MODEL_NAME = os.getenv("MODEL_NAME", "nlp_model")
 MODEL_VERSION = os.getenv("MODEL_VERSION", "1")
+
 
 # Initialize logger
 logger = logging.getLogger("uvicorn")
@@ -35,12 +38,6 @@ class PredictionRequest(BaseModel):
     text: str
     sentiment: str
 
-# Preprocess text for Triton input
-def preprocess_text(text: str, sentiment: str, max_len=96):
-    ids = np.random.randint(0, 100, size=(1, max_len), dtype=np.int32)
-    att = np.ones((1, max_len), dtype=np.int32)
-    tok = np.zeros((1, max_len), dtype=np.int32)
-    return ids, att, tok
 
 # Warm-up function
 @asynccontextmanager
@@ -89,12 +86,11 @@ async def predict(request: PredictionRequest):
         inputs[2].set_data_from_numpy(tok)
         response = triton_client.infer(model_name=MODEL_NAME, inputs=inputs, outputs=outputs, model_version=MODEL_VERSION)
 
-        # Extract logits and get start/end indices
+        # Extract logits and compute selected text
         start_logits = response.as_numpy("activation").flatten()
         end_logits = response.as_numpy("activation_1").flatten()
-        start_idx, end_idx = int(np.argmax(start_logits)), int(np.argmax(end_logits))
+        selected_text = get_selected_text_from_logits(request.text, start_logits, end_logits, max_len=96)
 
-        selected_text = request.text.strip() if start_idx > end_idx else request.text[start_idx:end_idx].strip()
         latency = time.perf_counter() - start_time
         logger.info(f"Prediction took {latency:.4f} seconds")
         return {"text": request.text, "selected_text": selected_text}

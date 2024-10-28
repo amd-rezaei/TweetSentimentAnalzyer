@@ -1,0 +1,361 @@
+============================= test session starts ==============================
+platform linux -- Python 3.9.15, pytest-8.3.3, pluggy-1.5.0
+benchmark: 4.0.0 (defaults: timer=time.perf_counter disable_gc=False min_rounds=5 min_time=0.000005 max_time=1.0 calibration_precision=10 warmup=False warmup_iterations=100000)
+rootdir: /app
+configfile: pytest.ini
+testpaths: tests
+plugins: anyio-4.6.2.post1, benchmark-4.0.0
+collected 19 items
+
+tests/test_app.py::test_predict_positive 
+-------------------------------- live log call ---------------------------------
+INFO     uvicorn:tf_app.py:68 Prediction took 1.4918 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+PASSED                                                                   [  5%]
+tests/test_app.py::test_predict_negative 
+-------------------------------- live log call ---------------------------------
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1210 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+PASSED                                                                   [ 10%]
+tests/test_benchmark.py::test_predict_latency[payload0] 
+-------------------------------- live log call ---------------------------------
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1297 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1219 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1223 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1179 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1212 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1160 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1191 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1191 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1281 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1239 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+PASSED                                                                   [ 15%]
+tests/test_integration.py::test_root_endpoint 
+-------------------------------- live log call ---------------------------------
+INFO     httpx:_client.py:1038 HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+PASSED                                                                   [ 21%]
+tests/test_integration.py::test_predict_endpoint 
+-------------------------------- live log call ---------------------------------
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1204 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+PASSED                                                                   [ 26%]
+tests/test_integration.py::test_predict_empty_text 
+-------------------------------- live log call ---------------------------------
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1189 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+PASSED                                                                   [ 31%]
+tests/test_load.py::test_predict_load[request_payload0] 
+-------------------------------- live log call ---------------------------------
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1157 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1104 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1096 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1089 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1146 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1083 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1079 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1103 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1081 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1086 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+PASSED                                                                   [ 36%]
+tests/test_load.py::test_predict_load[request_payload1] 
+-------------------------------- live log call ---------------------------------
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1113 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1092 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1072 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1105 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1085 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1086 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1079 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1082 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1076 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1117 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1073 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+PASSED                                                                   [ 42%]
+tests/test_load.py::test_predict_load[request_payload2] 
+-------------------------------- live log call ---------------------------------
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1097 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1088 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1099 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1087 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1137 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1171 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1159 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1145 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1124 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1112 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1167 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+PASSED                                                                   [ 47%]
+tests/test_load.py::test_predict_load[request_payload3] 
+-------------------------------- live log call ---------------------------------
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1132 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1091 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1066 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1136 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1087 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1115 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1087 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1089 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1094 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1187 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1129 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+PASSED                                                                   [ 52%]
+tests/test_load.py::test_predict_load[request_payload4] 
+-------------------------------- live log call ---------------------------------
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1135 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1080 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1100 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1114 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1141 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1106 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1137 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1082 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1099 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1103 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1082 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+PASSED                                                                   [ 57%]
+tests/test_load.py::test_predict_load[request_payload5] 
+-------------------------------- live log call ---------------------------------
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1093 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1130 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1064 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1102 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1115 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1148 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1115 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1135 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1104 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1138 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1123 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+PASSED                                                                   [ 63%]
+tests/test_units.py::test_predict[I love this!-positive-love] 
+-------------------------------- live log call ---------------------------------
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1125 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+PASSED                                                                   [ 68%]
+tests/test_units.py::test_predict[This is terrible.-negative-terrible] 
+-------------------------------- live log call ---------------------------------
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1099 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+PASSED                                                                   [ 73%]
+tests/test_units.py::test_predict[It's okay, nothing special.-neutral-okay] 
+-------------------------------- live log call ---------------------------------
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1152 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+PASSED                                                                   [ 78%]
+tests/test_units.py::test_predict[-positive-] 
+-------------------------------- live log call ---------------------------------
+INFO     uvicorn:tf_app.py:68 Prediction took 0.1112 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+PASSED                                                                   [ 84%]
+tests/test_units.py::test_predict[This product is amazing!-invalid_sentiment-None] FAILED [ 89%]
+tests/test_units.py::test_preprocess_triton SKIPPED (Only for Triton...) [ 94%]
+tests/test_units.py::test_model_loading PASSED                           [100%]
+
+=================================== FAILURES ===================================
+________ test_predict[This product is amazing!-invalid_sentiment-None] _________
+
+text = 'This product is amazing!', sentiment = 'invalid_sentiment'
+expected = None
+
+    @pytest.mark.parametrize("text,sentiment,expected", [
+        ("I love this!", "positive", "love"),
+        ("This is terrible.", "negative", "terrible"),
+        ("It's okay, nothing special.", "neutral", "okay"),
+        ("", "positive", ""),  # Edge case: empty text
+        ("This product is amazing!", "invalid_sentiment", None)  # Edge case: invalid sentiment
+    ])
+    def test_predict(text, sentiment, expected):
+        # Construct payload
+        payload = {"text": text, "sentiment": sentiment}
+    
+        # Send request to /predict endpoint using TestClient
+>       response = client.post("/predict", json=payload)
+
+tests/test_units.py:21: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/opt/conda/envs/senta/lib/python3.9/site-packages/starlette/testclient.py:593: in post
+    return super().post(
+/opt/conda/envs/senta/lib/python3.9/site-packages/httpx/_client.py:1157: in post
+    return self.request(
+/opt/conda/envs/senta/lib/python3.9/site-packages/starlette/testclient.py:484: in request
+    return super().request(
+/opt/conda/envs/senta/lib/python3.9/site-packages/httpx/_client.py:837: in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+/opt/conda/envs/senta/lib/python3.9/site-packages/httpx/_client.py:926: in send
+    response = self._send_handling_auth(
+/opt/conda/envs/senta/lib/python3.9/site-packages/httpx/_client.py:954: in _send_handling_auth
+    response = self._send_handling_redirects(
+/opt/conda/envs/senta/lib/python3.9/site-packages/httpx/_client.py:991: in _send_handling_redirects
+    response = self._send_single_request(request)
+/opt/conda/envs/senta/lib/python3.9/site-packages/httpx/_client.py:1027: in _send_single_request
+    response = transport.handle_request(request)
+/opt/conda/envs/senta/lib/python3.9/site-packages/starlette/testclient.py:377: in handle_request
+    raise exc
+/opt/conda/envs/senta/lib/python3.9/site-packages/starlette/testclient.py:374: in handle_request
+    portal.call(self.app, scope, receive, send)
+/opt/conda/envs/senta/lib/python3.9/site-packages/anyio/from_thread.py:290: in call
+    return cast(T_Retval, self.start_task_soon(func, *args).result())
+/opt/conda/envs/senta/lib/python3.9/concurrent/futures/_base.py:446: in result
+    return self.__get_result()
+/opt/conda/envs/senta/lib/python3.9/concurrent/futures/_base.py:391: in __get_result
+    raise self._exception
+/opt/conda/envs/senta/lib/python3.9/site-packages/anyio/from_thread.py:221: in _call_func
+    retval = await retval_or_awaitable
+/opt/conda/envs/senta/lib/python3.9/site-packages/fastapi/applications.py:1054: in __call__
+    await super().__call__(scope, receive, send)
+/opt/conda/envs/senta/lib/python3.9/site-packages/starlette/applications.py:113: in __call__
+    await self.middleware_stack(scope, receive, send)
+/opt/conda/envs/senta/lib/python3.9/site-packages/starlette/middleware/errors.py:187: in __call__
+    raise exc
+/opt/conda/envs/senta/lib/python3.9/site-packages/starlette/middleware/errors.py:165: in __call__
+    await self.app(scope, receive, _send)
+/opt/conda/envs/senta/lib/python3.9/site-packages/starlette/middleware/cors.py:85: in __call__
+    await self.app(scope, receive, send)
+/opt/conda/envs/senta/lib/python3.9/site-packages/starlette/middleware/exceptions.py:62: in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+/opt/conda/envs/senta/lib/python3.9/site-packages/starlette/_exception_handler.py:53: in wrapped_app
+    raise exc
+/opt/conda/envs/senta/lib/python3.9/site-packages/starlette/_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+/opt/conda/envs/senta/lib/python3.9/site-packages/starlette/routing.py:715: in __call__
+    await self.middleware_stack(scope, receive, send)
+/opt/conda/envs/senta/lib/python3.9/site-packages/starlette/routing.py:735: in app
+    await route.handle(scope, receive, send)
+/opt/conda/envs/senta/lib/python3.9/site-packages/starlette/routing.py:288: in handle
+    await self.app(scope, receive, send)
+/opt/conda/envs/senta/lib/python3.9/site-packages/starlette/routing.py:76: in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+/opt/conda/envs/senta/lib/python3.9/site-packages/starlette/_exception_handler.py:53: in wrapped_app
+    raise exc
+/opt/conda/envs/senta/lib/python3.9/site-packages/starlette/_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+/opt/conda/envs/senta/lib/python3.9/site-packages/starlette/routing.py:73: in app
+    response = await f(request)
+/opt/conda/envs/senta/lib/python3.9/site-packages/fastapi/routing.py:301: in app
+    raw_response = await run_endpoint_function(
+/opt/conda/envs/senta/lib/python3.9/site-packages/fastapi/routing.py:212: in run_endpoint_function
+    return await dependant.call(**values)
+src/tf_app.py:66: in predict
+    selected_text = model.predict(request.text, request.sentiment)
+src/model_inference.py:91: in predict
+    input_ids, attention_mask, token_type_ids = self.preprocess(text, sentiment)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <src.model_inference.TweetSentimentModel object at 0x7fd3c3a236a0>
+text = ' This product is amazing!', sentiment = 'invalid_sentiment'
+
+    def preprocess(self, text, sentiment):
+        input_ids = np.ones((1, self.MAX_LEN), dtype='int32')
+        attention_mask = np.zeros((1, self.MAX_LEN), dtype='int32')
+        token_type_ids = np.zeros((1, self.MAX_LEN), dtype='int32')
+    
+        # Clean and encode the input text
+        text = " " + " ".join(text.split())
+        enc = self.tokenizer.encode(text)
+    
+        # Define the sentiment ID and calculate how much of enc.ids can be used
+>       sentiment_id = self.sentiment_id[sentiment]
+E       KeyError: 'invalid_sentiment'
+
+src/model_inference.py:78: KeyError
+
+------------------------------------------------------------------------------------- benchmark 'load_test': 6 tests -------------------------------------------------------------------------------------
+Name (time in ms)                            Min                 Max                Mean            StdDev              Median               IQR            Outliers     OPS            Rounds  Iterations
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+test_predict_load[request_payload5]     109.1641 (1.0)      117.9257 (1.03)     114.5741 (1.03)     2.6279 (1.75)     114.3254 (1.03)     3.2179 (1.67)          2;0  8.7280 (0.98)          9           1
+test_predict_load[request_payload3]     109.8653 (1.01)     121.7559 (1.06)     113.5888 (1.02)     3.6245 (2.41)     111.8690 (1.01)     3.4896 (1.81)          2;1  8.8037 (0.98)          9           1
+test_predict_load[request_payload1]     110.1507 (1.01)     114.5914 (1.0)      111.7743 (1.0)      1.5033 (1.0)      111.2045 (1.0)      1.9254 (1.0)           3;0  8.9466 (1.0)           9           1
+test_predict_load[request_payload0]     111.0332 (1.02)     118.1972 (1.03)     112.9262 (1.01)     2.2385 (1.49)     112.3753 (1.01)     2.0881 (1.08)          1;1  8.8553 (0.99)          9           1
+test_predict_load[request_payload4]     111.0632 (1.02)     116.7824 (1.02)     113.6794 (1.02)     2.0089 (1.34)     113.4865 (1.02)     2.3588 (1.23)          4;0  8.7967 (0.98)          9           1
+test_predict_load[request_payload2]     111.3515 (1.02)     119.7755 (1.05)     115.2994 (1.03)     3.0237 (2.01)     115.1349 (1.04)     5.2557 (2.73)          4;0  8.6731 (0.97)          9           1
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+------------------------------------------- benchmark 'prediction_latency': 1 tests -------------------------------------------
+Name (time in ms)                       Min       Max      Mean  StdDev    Median     IQR  Outliers     OPS  Rounds  Iterations
+-------------------------------------------------------------------------------------------------------------------------------
+test_predict_latency[payload0]     119.1840  131.0825  124.0627  3.6003  123.4947  3.7332       2;0  8.0604       8           1
+-------------------------------------------------------------------------------------------------------------------------------
+
+Legend:
+  Outliers: 1 Standard Deviation from Mean; 1.5 IQR (InterQuartile Range) from 1st Quartile and 3rd Quartile.
+  OPS: Operations Per Second, computed as 1 / Mean
+=========================== short test summary info ============================
+FAILED tests/test_units.py::test_predict[This product is amazing!-invalid_sentiment-None]
+============= 1 failed, 17 passed, 1 skipped, 2 warnings in 22.10s =============

@@ -3,8 +3,8 @@ import pandas as pd
 import numpy as np
 import tensorflow as tf
 from transformers import RobertaConfig, TFRobertaModel
-import tokenizers
 from tensorflow.python.compiler.tensorrt import trt_convert as trt
+from .utils import get_selected_text_from_logits, preprocess_text
 
 class TweetSentimentModel:
     def __init__(self, model_path, config_path, tokenizer_path, merges_path, weights_path, max_len=96):
@@ -13,13 +13,6 @@ class TweetSentimentModel:
         self.config_path = config_path
         self.weights_path = weights_path
         
-        # Load tokenizer
-        self.tokenizer = tokenizers.ByteLevelBPETokenizer(
-            tokenizer_path,
-            merges_path,
-            lowercase=True,
-            add_prefix_space=True
-        )
         
         # Sentiment mapping
         self.sentiment_id = {'positive': 1313, 'negative': 2430, 'neutral': 7974}
@@ -66,24 +59,7 @@ class TweetSentimentModel:
         print(f"Model saved to {output_path} in TensorRT format")
 
     def preprocess(self, text, sentiment):
-        input_ids = np.ones((1, self.MAX_LEN), dtype='int32')
-        attention_mask = np.zeros((1, self.MAX_LEN), dtype='int32')
-        token_type_ids = np.zeros((1, self.MAX_LEN), dtype='int32')
-
-        # Clean and encode the input text
-        text = " " + " ".join(text.split())
-        enc = self.tokenizer.encode(text)
-        
-        # Define the sentiment ID and calculate how much of enc.ids can be used
-        sentiment_id = self.sentiment_id[sentiment]
-        available_length = self.MAX_LEN - 5  # Reserve space for special tokens
-
-        # Truncate enc.ids if it exceeds the available length
-        token_ids = enc.ids[:available_length]
-
-        # Construct the input with reserved special tokens and sentiment ID
-        input_ids[0, :len(token_ids) + 5] = [0] + token_ids + [2, 2] + [sentiment_id] + [2]
-        attention_mask[0, :len(token_ids) + 5] = 1
+        input_ids, attention_mask, token_type_ids = preprocess_text(text, sentiment)
 
         return input_ids, attention_mask, token_type_ids
 
@@ -91,16 +67,8 @@ class TweetSentimentModel:
         input_ids, attention_mask, token_type_ids = self.preprocess(text, sentiment)
         preds_start, preds_end = self.model.predict([input_ids, attention_mask, token_type_ids], verbose=0)
         
-        a = np.argmax(preds_start[0])
-        b = np.argmax(preds_end[0])
-
-        if a > b:
-            selected_text = text.strip()
-        else:
-            enc = self.tokenizer.encode(" " + " ".join(text.split()))
-            b = min(b + 1, len(enc.ids))
-            selected_text = self.tokenizer.decode(enc.ids[max(a - 1, 0):b]).strip()
-
+        selected_text = get_selected_text_from_logits(text, preds_start[0], preds_end[0], max_len=self.MAX_LEN)
+        
         return selected_text
     
     def get_model(self):

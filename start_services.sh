@@ -55,9 +55,9 @@ else
     exit 1
 fi
 
-# Start supervisord
+# Start supervisord in the background
 echo "Starting supervisord..."
-/usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
+/usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf &
 
 # Wait for the appropriate server based on DEPLOYMENT_TYPE
 if [ "$DEPLOYMENT_TYPE" = "encapsulated" ]; then
@@ -68,6 +68,23 @@ fi
 
 # Run tests if requested
 if [ "$RUN_TESTS_ON_START" = "true" ]; then
-    echo "Running tests..."
-    source /opt/conda/bin/activate senta && pytest --maxfail=5 --disable-warnings
+    echo "Running tests with pytest.ini configuration..."
+    source /opt/conda/bin/activate senta
+
+    # Set PYTHONPATH to include the /app directory so tests can find the src package
+    export PYTHONPATH=/app:$PYTHONPATH
+
+    # Run pytest and capture output in a log file
+    pytest --maxfail=5 --disable-warnings -c /app/pytest.ini > /var/log/test_results.log 2>&1
+
+    # Check if the log file was created and contains results
+    if [ -s /var/log/test_results.log ]; then
+        echo "Test results:"
+        cat /var/log/test_results.log  # Display test results to stdout
+    else
+        echo "Warning: No test results found in /var/log/test_results.log. Test execution might have failed."
+    fi
 fi
+
+# Keep the container running by waiting on supervisord
+wait

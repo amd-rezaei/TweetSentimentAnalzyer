@@ -27,6 +27,7 @@ COPY src /app/src
 COPY static /app/static
 COPY triton_models /app/triton_models
 COPY pytest.ini /app/pytest.ini
+COPY tests /app/tests
 COPY start_services.sh /app/start_services.sh
 
 
