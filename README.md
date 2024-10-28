@@ -27,18 +27,22 @@ This service provides a **Tweet Sentiment Extraction** API using a pretrained Ro
 
 ## Project Structure
 ```
-├── config                   # Model configuration files
+.
+├── config                   # Model config files
+├── data                     # Dataset files
+├── Dockerfile               # Docker configuration
+├── environment.yml          # Conda environment file
+├── model_inference          # Model training/evaluation scripts
 ├── models                   # Pre-trained model weights
-├── src                      # Source code for the FastAPI app and model inference
-│   ├── app.py               # Main FastAPI app entry point
-│   ├── triton_app.py        # FastAPI client proxy for Triton deployment
-│   └── model_inference.py   # Model inference code for encapsulated deployment
-├── static                   # Static files (e.g., HTML for UI)
-├── tests                    # Unit and integration tests
-├── environment.yml          # Conda environment configuration
-├── Dockerfile               # Docker configuration for dual deployment
-├── start_services.sh        # Script for dynamic supervisord configuration
-└── README.md                # Project documentation
+├── src                      # FastAPI app and inference code
+│   ├── app.py               # Main app entry point
+│   ├── tf_app.py            # TensorFlow deployment app
+│   └── triton_app.py        # Triton deployment app
+├── start_services.sh        # Dynamic supervisord setup
+├── static                   # HTML for UI
+├── tests                    # Test suite
+├── triton_models            # Triton model repository
+└── utils                    # Utility scripts (e.g., model conversion)
 ```
 
 ## Requirements
