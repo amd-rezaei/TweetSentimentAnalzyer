@@ -1,24 +1,35 @@
-import os
+# test_integration.py
+
+import pytest
 from fastapi.testclient import TestClient
 from src.app import app
 
 client = TestClient(app)
-# DEPLOYMENT_TYPE = os.getenv("DEPLOYMENT_TYPE", "docker").lower()
 
 def test_root_endpoint():
     response = client.get("/")
     assert response.status_code == 200
-    assert "<html" in response.text.lower()  # Ensure HTML content is served
-
-def test_predict_endpoint():
-    payload = {"text": "just got home from a nice party, just not tired yet", "sentiment": "positive"}
-    response = client.post("/predict", json=payload)
-    assert response.status_code == 200
-    assert "selected_text" in response.json()
-    assert "not tired" in response.json()["selected_text"].lower()
+    assert "<html" in response.text.lower()
 
 def test_predict_empty_text():
     payload = {"text": "", "sentiment": "positive"}
     response = client.post("/predict", json=payload)
     assert response.status_code == 200
     assert response.json()["selected_text"] == ""
+
+@pytest.mark.parametrize("text, sentiment, expected_substr", [
+    ("I love this!", "positive", "love"),
+    ("This is terrible.", "negative", "terrible"),
+    ("It's okay, nothing special.", "neutral", "okay"),
+    ("", "positive", ""),
+    ("Great quality, amazing product.", "invalid_sentiment", None)
+])
+def test_predict_endpoint(text, sentiment, expected_substr):
+    payload = {"text": text, "sentiment": sentiment}
+    response = client.post("/predict", json=payload)
+    assert response.status_code == 200
+    data = response.json()
+    if sentiment == "invalid_sentiment":
+        assert data["selected_text"] is None
+    else:
+        assert expected_substr.lower() in data["selected_text"].lower()
