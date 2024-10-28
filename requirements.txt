@@ -8,3 +8,4 @@ tensorflow==2.11.0
 tokenizers==0.10.3
 transformers==4.15.0
 pytest-benchmark
+tritonclient[http]

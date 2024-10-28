@@ -1,7 +1,9 @@
 
 # Tweet Sentiment Extraction Service
 
-A FastAPI-based web service that deploys a pre-trained sentiment extraction model from the Kaggle "Tweet Sentiment Extraction" competition.
+A FastAPI-based web service that deploys a pre-trained sentiment extraction model from the Kaggle "Tweet Sentiment Extraction" competition. This service can deploy the model in two ways:
+- As an encapsulated FastAPI app for direct model inference.
+- Using NVIDIA Triton Inference Server with a FastAPI client proxy.
 
 ## Table of Contents
 - [Overview](#overview)
@@ -11,8 +13,8 @@ A FastAPI-based web service that deploys a pre-trained sentiment extraction mode
   - [Local Setup](#local-setup)
   - [Docker Setup](#docker-setup)
 - [Running the Service](#running-the-service)
-  - [Local Run](#local-run)
-  - [Docker Run](#docker-run)
+  - [Encapsulated FastAPI](#encapsulated-fastapi)
+  - [Triton Deployment](#triton-deployment)
 - [API Usage](#api-usage)
   - [Endpoints](#endpoints)
   - [Example Request](#example-request)
@@ -28,19 +30,21 @@ This service provides a **Tweet Sentiment Extraction** API using a pretrained Ro
 ├── config                   # Model configuration files
 ├── models                   # Pre-trained model weights
 ├── src                      # Source code for the FastAPI app and model inference
-│   ├── app.py               # Main FastAPI app
-│   └── model_inference.py   # Model inference code
+│   ├── app.py               # Main FastAPI app entry point
+│   ├── triton_app.py        # FastAPI client proxy for Triton deployment
+│   └── model_inference.py   # Model inference code for encapsulated deployment
 ├── static                   # Static files (e.g., HTML for UI)
 ├── tests                    # Unit and integration tests
 ├── environment.yml          # Conda environment configuration
-├── Dockerfile               # Docker configuration for GPU support
+├── Dockerfile               # Docker configuration for dual deployment
+├── start_services.sh        # Script for dynamic supervisord configuration
 └── README.md                # Project documentation
 ```
 
 ## Requirements
 - **Python 3.9**
 - **CUDA-compatible GPU** (for Dockerized GPU acceleration)
-- **CUDA Toolkit** version compatible with TensorFlow
+- **CUDA Toolkit** version compatible with TensorFlow and Triton
 - **Docker** and **NVIDIA Docker** for GPU support
 
 ## Setup
@@ -67,26 +71,24 @@ This service provides a **Tweet Sentiment Extraction** API using a pretrained Ro
    docker build -t tweet-sentiment-service:optimized .
    ```
 
-2. **Run with GPU Support**:
-   ```bash
-   docker run --gpus all -p 8000:8000 tweet-sentiment-service:optimized
-   ```
-
 ## Running the Service
 
-### Local Run
-Run the FastAPI app with:
+### Encapsulated FastAPI
+This runs the model directly within FastAPI, without Triton.
 ```bash
-uvicorn src.app:app --host 0.0.0.0 --port 8000 --reload
+docker run --gpus all -e DEPLOYMENT_TYPE=encapsulated -p 9001:9001 tweet-sentiment-service:optimized
 ```
+Access the service at [http://localhost:9001](http://localhost:9001).
 
-### Docker Run
-Start the container with:
+### Triton Deployment
+This deploys the model using NVIDIA Triton Inference Server, with a FastAPI client on port 9000.
 ```bash
-docker run --gpus all -p 8000:8000 tweet-sentiment-service:optimized
+docker run --gpus all -e DEPLOYMENT_TYPE=triton -p 8000:8000 -p 8001:8001 -p 8002:8002 -p 9000:9000 tweet-sentiment-service:optimized
 ```
-
-Access the service at `http://localhost:8000`.
+- **Triton Server**:
+  - Health: [http://localhost:8000/v2/health/ready](http://localhost:8000/v2/health/ready)
+  - Models: [http://localhost:8000/v2/models](http://localhost:8000/v2/models)
+- **FastAPI Client Proxy**: [http://localhost:9000](http://localhost:9000)
 
 ## API Usage
 
@@ -97,9 +99,7 @@ Access the service at `http://localhost:8000`.
 ### Example Request
 #### Request
 ```bash
-curl -X POST "http://localhost:8000/predict" \
--H "Content-Type: application/json" \
--d '{"text": "I love the sunny weather!", "sentiment": "positive"}'
+curl -X POST "http://localhost:9001/predict" -H "Content-Type: application/json" -d '{"text": "I love the sunny weather!", "sentiment": "positive"}'
 ```
 
 #### Response

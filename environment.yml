@@ -229,8 +229,9 @@ dependencies:
   - fastapi
   - pytest
   - pytest-benchmark
-
   - pip:
+      - tritonclient[http]
+      - gevent
       - filelock==3.16.1
       - fsspec==2024.10.0
       - huggingface-hub==0.26.1
