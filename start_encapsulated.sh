@@ -5,7 +5,7 @@ wait_for_port() {
   local PORT=$1
   echo "Waiting for service on port $PORT..."
   for i in {1..15}; do
-    nc -z localhost $PORT && echo "Service on port $PORT is ready!" && return 0
+    nc -z 0.0.0.0 $PORT && echo "Service on port $PORT is ready!" && return 0
     echo "Port $PORT not ready, retrying..."
     sleep 2
   done
