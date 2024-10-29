@@ -5,7 +5,7 @@ import pytest
 import numpy as np
 from src.utils import preprocess_text
 from fastapi.testclient import TestClient
-from src.triton_app import app 
+from src.app import app 
 
 client = TestClient(app)
 

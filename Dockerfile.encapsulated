@@ -1,27 +1,40 @@
-# Dockerfile.encapsulated
+# Use an NVIDIA CUDA base image with CUDNN for TensorFlow compatibility
+FROM nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu22.04
 
-FROM nvidia/cuda:12.6.2-cudnn-devel-ubuntu20.04
+# Install Miniconda for Conda environment management and essential tools
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    wget \
+    curl \
+    ca-certificates \
+    build-essential \
+    git \
+    netcat \
+    && rm -rf /var/lib/apt/lists/*
 
+# Install Miniconda
+RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /miniconda.sh && \
+    bash /miniconda.sh -b -p /opt/conda && \
+    rm /miniconda.sh && \
+    /opt/conda/bin/conda clean --all --yes && \
+    ln -s /opt/conda/bin/conda /usr/local/bin/conda
 
-# Install system dependencies, including curl, Miniconda, and any required tools
-RUN apt-get update && apt-get install -y wget netcat curl supervisor && \
-    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh && \
-    bash Miniconda3-latest-Linux-x86_64.sh -b -p /opt/conda && \
-    rm Miniconda3-latest-Linux-x86_64.sh && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
+# Set environment variables for CUDA and GPU support
+ENV CUDA_HOME=/usr/local/cuda
+ENV LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+ENV PATH=/usr/local/cuda/bin:$PATH
 
-# Add Conda to PATH
-ENV PATH=/opt/conda/bin:$PATH
-ENV RUN_TESTS_ON_START="true"  
-
-# Copy environment.yml to create Conda environment
+# Copy environment.yml to container
 COPY environment.yml /app/environment.yml
-RUN conda env create -f /app/environment.yml && conda clean -afy
 
-# Set working directory
+# Create and activate the Conda environment from environment.yml
+RUN conda env create -f /app/environment.yml && conda clean --all --yes
+
+
+# Configure shell to use the Conda environment by default
+SHELL ["conda", "run", "-n", "senta", "/bin/bash", "-c"]
+
+# Set working directory and copy application files
 WORKDIR /app
-
-# Copy application files and directories
 COPY config /app/config
 COPY models /app/models
 COPY src /app/src
@@ -30,10 +43,11 @@ COPY tests /app/tests
 COPY pytest.ini /app/pytest.ini
 COPY start_encapsulated.sh /app/start_encapsulated.sh
 
+# Make entrypoint script executable
+RUN chmod +x /app/start_encapsulated.sh
+
 # Expose FastAPI port
 EXPOSE 9001
 
-
-# Set permissions and entrypoint
-RUN chmod +x /app/start_encapsulated.sh
+# Define entrypoint to execute start script
 ENTRYPOINT ["/app/start_encapsulated.sh"]

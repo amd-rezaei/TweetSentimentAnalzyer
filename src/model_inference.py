@@ -1,5 +1,4 @@
 # model_inference.py
-import pandas as pd
 import numpy as np
 import tensorflow as tf
 from transformers import RobertaConfig, TFRobertaModel

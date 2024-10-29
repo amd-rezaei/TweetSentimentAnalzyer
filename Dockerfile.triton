@@ -3,24 +3,21 @@
 # Use Triton Inference Server base image with Python
 FROM nvcr.io/nvidia/tritonserver:23.03-py3
 
-# Install system dependencies, Miniconda, and any required tools
-RUN apt-get update && apt-get install -y wget supervisor netcat && \
-    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh && \
-    bash Miniconda3-latest-Linux-x86_64.sh -b -p /opt/conda && \
-    rm Miniconda3-latest-Linux-x86_64.sh && \
+# Install system dependencies and required tools
+RUN apt-get update && apt-get install -y python3-pip python3-venv wget supervisor netcat && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
-
-# Add Conda to PATH
-ENV PATH=/opt/conda/bin:$PATH
-ENV RUN_TESTS_ON_START="true"  
-
-
-# Copy environment.yml to create Conda environment
-COPY environment.yml /app/environment.yml
-RUN conda env create -f /app/environment.yml && conda clean -afy
 
 # Set working directory
 WORKDIR /app
+
+# Copy requirements.txt to install dependencies
+COPY requirements.txt /app/requirements.txt
+RUN python3 -m venv /app/venv && \
+    /app/venv/bin/pip install --upgrade pip && \
+    /app/venv/bin/pip install -r /app/requirements.txt
+
+# Set PATH to use the virtual environment's Python and pip
+ENV PATH="/app/venv/bin:$PATH"
 
 # Copy application files and directories
 COPY config /app/config
@@ -30,7 +27,6 @@ COPY tests /app/tests
 COPY pytest.ini /app/pytest.ini
 COPY triton_models /models
 COPY start_triton.sh /app/start_triton.sh
-
 
 # Expose ports for both FastAPI and Triton
 EXPOSE 8000 8001 8002 9000
@@ -45,4 +41,3 @@ ENV STATIC_DIR=/app/static \
 # Set permissions and entrypoint
 RUN chmod +x /app/start_triton.sh
 ENTRYPOINT ["/app/start_triton.sh"]
-

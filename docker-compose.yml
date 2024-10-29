@@ -1,5 +1,3 @@
-version: "3.8"  # Specify version
-
 services:
   triton:
     build:
@@ -11,14 +9,14 @@ services:
         reservations:
           devices:
             - driver: nvidia
-              count: 1  # Specify the number of GPUs needed
+              count: 1  
               capabilities: [gpu]
     environment:
       DEPLOYMENT_TYPE: "triton"
       TRITON_URL: "localhost:8000"  # Ensures FastAPI connects to Triton on port 8000
       MODEL_NAME: "nlp_model"       # Model name to be used by Triton
       MODEL_VERSION: "1"
-      RUN_TESTS_ON_START: "false"
+      RUN_TESTS_ON_START: "true"
     shm_size: '1gb'
     ulimits:
       memlock: -1
@@ -32,6 +30,9 @@ services:
       - "9000:9000"  # FastAPI for Triton client
     networks:
       - app_network
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
 
   encapsulated:
     build:
@@ -40,7 +41,7 @@ services:
     image: tweet-sentiment-service:optimized  # Optional: tag it locally
     environment:
       DEPLOYMENT_TYPE: "encapsulated"
-      RUN_TESTS_ON_START: "false"
+      RUN_TESTS_ON_START: "true"
     ports:
       - "9001:9001"  # FastAPI for Encapsulated
     runtime: nvidia  # GPU support for Encapsulated
@@ -53,6 +54,9 @@ services:
               capabilities: [gpu]
     networks:
       - app_network
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
 
 networks:
   app_network:

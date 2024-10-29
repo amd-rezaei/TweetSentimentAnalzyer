@@ -1,6 +1,7 @@
 import os
 import time
 import subprocess
+import threading
 import pytest
 from fastapi.testclient import TestClient
 from src.app import app
@@ -18,25 +19,30 @@ def test_predict_and_check_gpu_usage():
     baseline_gpu_utilization = get_gpu_utilization()
     print(f"Baseline GPU Utilization: {baseline_gpu_utilization}%")
     
-    # Step 3: Trigger a prediction request and check GPU usage during the prediction
-    print("Sending prediction request...")
+    # Step 3: Start continuous GPU monitoring in a separate thread
+    gpu_utilization_data, monitor_thread, stop_monitoring = continuous_gpu_monitor()
+    
+    # Step 4: Trigger multiple prediction requests to increase GPU utilization
+    print("Sending multiple prediction requests...")
     start_time = time.time()
-    response = client.post("/predict", json=payload)
+    for _ in range(32):  # Run 10 predictions to increase GPU load
+        response = client.post("/predict", json=payload)
+        assert response.status_code == 200, "Prediction request failed!"
     prediction_duration = time.time() - start_time
     
-    assert response.status_code == 200, "Prediction request failed!"
+    # Stop GPU monitoring
+    stop_monitoring()
+    monitor_thread.join()
     
-    # Step 4: Run nvidia-smi after prediction to capture GPU usage
-    print("Running nvidia-smi after prediction...")
-    post_prediction_gpu_utilization = get_gpu_utilization()
-    print(f"Post-Prediction GPU Utilization: {post_prediction_gpu_utilization}%")
+    # Step 5: Calculate the peak GPU utilization during prediction
+    peak_gpu_utilization = max(gpu_utilization_data)
+    print(f"Peak GPU Utilization during prediction: {peak_gpu_utilization}%")
     
-    # Step 5: Validate that GPU usage increased after prediction started
-    assert post_prediction_gpu_utilization > baseline_gpu_utilization, \
+    # Step 6: Validate that GPU usage increased after prediction started
+    assert peak_gpu_utilization > baseline_gpu_utilization, \
         "Expected GPU utilization to increase during prediction"
 
     print(f"Prediction took {prediction_duration:.2f} seconds, and GPU utilization increased as expected.")
-
 
 def get_gpu_utilization():
     """Helper function to retrieve GPU utilization percentage using nvidia-smi."""
@@ -61,3 +67,23 @@ def get_gpu_utilization():
     except subprocess.CalledProcessError as e:
         print(f"Error running nvidia-smi: {e}")
         return 0
+
+def continuous_gpu_monitor(interval=0.5):
+    """Continuously monitor GPU utilization in a separate thread."""
+    utilization_data = []
+    monitoring = True
+
+    def monitor():
+        while monitoring:
+            utilization = get_gpu_utilization()
+            utilization_data.append(utilization)
+            time.sleep(interval)
+
+    monitor_thread = threading.Thread(target=monitor)
+    monitor_thread.start()
+
+    def stop_monitoring():
+        nonlocal monitoring
+        monitoring = False
+
+    return utilization_data, monitor_thread, stop_monitoring

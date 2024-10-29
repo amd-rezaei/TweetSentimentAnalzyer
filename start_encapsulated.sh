@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# Activate Conda environment
+source /opt/conda/etc/profile.d/conda.sh
+conda activate senta
+
+
+
+export DOCKER_DEFAULT_RUNTIME=nvidia
+
 # Function to wait for a specific port to be ready
 wait_for_port() {
   local PORT=$1
@@ -15,7 +23,6 @@ wait_for_port() {
 
 # Start FastAPI for Encapsulated client
 echo "Starting FastAPI server for Encapsulated client..."
-source /opt/conda/bin/activate senta
 export PYTHONPATH="/app:${PYTHONPATH}"
 uvicorn src.app:app --host 0.0.0.0 --port 9001 --log-level info &
 
