@@ -20,18 +20,6 @@ WEIGHTS_PATH = os.getenv('WEIGHTS_PATH', 'models/weights_final.h5')
 # Initialize logger
 logger = logging.getLogger("uvicorn")
 
-# Initialize FastAPI app
-app = FastAPI(lifespan=lifespan)
-
-
-# Enable CORS
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
 
 class PredictionRequest(BaseModel):
     text: str
@@ -50,10 +38,30 @@ model = TweetSentimentModel(
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     logger.info("Starting up... warming up the model")
-    model.predict("Warm-up text", "neutral")
-    logger.info(f"Warm-up prediction complete, result: {result}")
+    try:
+        # Run a warm-up prediction to initialize the model
+        result = model.predict("Warm-up text", "neutral")
+        logger.info(f"Warm-up prediction complete, result: {result}")
+    except Exception as e:
+        logger.error(f"Error during warm-up: {e}")
+
     yield  # Start serving requests
     logger.info("Shutting down...")
+
+
+# Initialize FastAPI app
+app = FastAPI(lifespan=lifespan)
+
+
+# Enable CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 # Serve static files
 @app.get("/", response_class=HTMLResponse)

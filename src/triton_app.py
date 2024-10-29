@@ -1,4 +1,3 @@
-# app_triton.py
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
@@ -18,13 +17,38 @@ TRITON_URL = os.getenv("TRITON_URL", "localhost:8000")
 MODEL_NAME = os.getenv("MODEL_NAME", "nlp_model")
 MODEL_VERSION = os.getenv("MODEL_VERSION", "1")
 
-
 # Initialize logger
 logger = logging.getLogger("uvicorn")
 
-# Initialize FastAPI app
-app = FastAPI(lifespan=lifespan)
+# Define lifespan function to warm up Triton client
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    logger.info("Connecting to Triton server and warming up...")
+    try:
+        triton_client = httpclient.InferenceServerClient(url=TRITON_URL)
+        
+        # Run a warm-up request to initialize the model
+        ids, att, tok = preprocess_text("Warm-up text", "neutral")
+        inputs = [
+            httpclient.InferInput("input_1", ids.shape, "INT32"),
+            httpclient.InferInput("input_2", att.shape, "INT32"),
+            httpclient.InferInput("input_3", tok.shape, "INT32")
+        ]
+        outputs = [httpclient.InferRequestedOutput("activation"), httpclient.InferRequestedOutput("activation_1")]
+        inputs[0].set_data_from_numpy(ids)
+        inputs[1].set_data_from_numpy(att)
+        inputs[2].set_data_from_numpy(tok)
+        
+        # Perform inference to warm up the model
+        response = triton_client.infer(model_name=MODEL_NAME, inputs=inputs, outputs=outputs, model_version=MODEL_VERSION)
+        logger.info("Warm-up successful, model response: %s", response.get_response())
+    except Exception as e:
+        logger.error(f"Error during warm-up: {e}")
 
+    yield  # Start serving requests
+
+# Initialize FastAPI app with lifespan function
+app = FastAPI(lifespan=lifespan)
 
 # Enable CORS
 app.add_middleware(
@@ -39,30 +63,6 @@ class PredictionRequest(BaseModel):
     text: str
     sentiment: str
 
-
-# Warm-up function
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    logger.info("Connecting to Triton server and warming up...")
-    try:
-        triton_client = httpclient.InferenceServerClient(url=TRITON_URL)
-        ids, att, tok = preprocess_text("Warm-up text", "neutral")
-        inputs = [
-            httpclient.InferInput("input_1", ids.shape, "INT32"),
-            httpclient.InferInput("input_2", att.shape, "INT32"),
-            httpclient.InferInput("input_3", tok.shape, "INT32")
-        ]
-        outputs = [httpclient.InferRequestedOutput("activation"), httpclient.InferRequestedOutput("activation_1")]
-        inputs[0].set_data_from_numpy(ids)
-        inputs[1].set_data_from_numpy(att)
-        inputs[2].set_data_from_numpy(tok)
-        triton_client.infer(model_name=MODEL_NAME, inputs=inputs, outputs=outputs, model_version=MODEL_VERSION)
-        logger.info("Warm-up successful, model response: %s", response.get_response())
-    except Exception as e:
-        logger.error(f"Error during warm-up: {e}")
-
-    yield  # Start serving requests
-
 # Serve static files
 @app.get("/", response_class=HTMLResponse)
 async def read_root():
@@ -74,6 +74,7 @@ async def read_root():
 async def predict(request: PredictionRequest):
     start_time = time.perf_counter()
     try:
+        # Initialize Triton client for inference
         triton_client = httpclient.InferenceServerClient(url=TRITON_URL)
         ids, att, tok = preprocess_text(request.text, request.sentiment)
         inputs = [
@@ -85,6 +86,8 @@ async def predict(request: PredictionRequest):
         inputs[0].set_data_from_numpy(ids)
         inputs[1].set_data_from_numpy(att)
         inputs[2].set_data_from_numpy(tok)
+        
+        # Perform inference
         response = triton_client.infer(model_name=MODEL_NAME, inputs=inputs, outputs=outputs, model_version=MODEL_VERSION)
 
         # Extract logits and compute selected text

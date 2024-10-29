@@ -3,6 +3,7 @@ services:
     build:
       context: .. 
       dockerfile: docker/Dockerfile.triton
+    image: ahmadrezaei96/triton:latest
     runtime: nvidia
     deploy:
       resources:
@@ -38,7 +39,7 @@ services:
     build:
       context: ..  
       dockerfile: docker/Dockerfile.encapsulated
-    image: tweet-sentiment-service:optimized  # Optional: tag it locally
+    image: ahmadrezaei96/encapsulated:latest
     environment:
       DEPLOYMENT_TYPE: "encapsulated"
       RUN_TESTS_ON_START: "false"
