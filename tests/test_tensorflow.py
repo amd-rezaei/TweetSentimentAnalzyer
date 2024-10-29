@@ -2,10 +2,12 @@
 
 import os
 import pytest
-from src.model_inference import TweetSentimentModel
+
 
 @pytest.mark.skipif(os.getenv("DEPLOYMENT_TYPE") == "triton", reason="Only for TensorFlow deployment")
 def test_model_loading():
+    from src.model_inference import TweetSentimentModel
+    
     model = TweetSentimentModel(
         model_path=os.getenv("MODEL_PATH", "config/pretrained-roberta-base.h5"),
         config_path=os.getenv("CONFIG_PATH", "config/config-roberta-base.json"),

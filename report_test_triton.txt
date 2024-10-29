@@ -1,185 +1,181 @@
 ============================= test session starts ==============================
-platform linux -- Python 3.9.15, pytest-8.3.3, pluggy-1.5.0
+platform linux -- Python 3.8.10, pytest-8.3.3, pluggy-1.5.0
 benchmark: 4.0.0 (defaults: timer=time.perf_counter disable_gc=False min_rounds=5 min_time=0.000005 max_time=1.0 calibration_precision=10 warmup=False warmup_iterations=100000)
 rootdir: /app
 configfile: pytest.ini
 testpaths: tests
-plugins: anyio-4.6.2.post1, benchmark-4.0.0
+plugins: benchmark-4.0.0, anyio-4.5.2
 collected 16 items
 
 tests/test_benchmark.py::test_predict_latency 
 -------------------------------- live log call ---------------------------------
-INFO     uvicorn:triton_app.py:95 Prediction took 0.1266 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 8.0971 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0352 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0122 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0348 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0138 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0356 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0128 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0349 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0130 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0324 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0124 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0063 seconds
-INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0052 seconds
-INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0059 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0125 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
 PASSED                                                                   [  6%]
 tests/test_benchmark.py::test_predict_load[short_text_positive] 
 -------------------------------- live log call ---------------------------------
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0059 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0130 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0056 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0129 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0060 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0125 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0062 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0123 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0062 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0128 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0061 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0135 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0063 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0109 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0065 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0094 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0063 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0103 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0056 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0099 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
 PASSED                                                                   [ 12%]
 tests/test_benchmark.py::test_predict_load[short_text_negative] 
 -------------------------------- live log call ---------------------------------
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0064 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0098 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0062 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0093 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0058 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0088 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0065 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0087 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0057 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0082 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0054 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0086 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0054 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0085 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0058 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0086 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0050 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0084 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0055 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0087 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
 PASSED                                                                   [ 18%]
 tests/test_benchmark.py::test_predict_load[long_text_positive] 
 -------------------------------- live log call ---------------------------------
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0062 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0076 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0064 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0099 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0059 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0076 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0056 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0075 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0060 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0077 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0061 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0083 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0062 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0078 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0064 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0084 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0059 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0083 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0059 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0078 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
 PASSED                                                                   [ 25%]
 tests/test_benchmark.py::test_predict_load[short_text_neutral] 
 -------------------------------- live log call ---------------------------------
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0109 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0080 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0057 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0084 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0061 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0072 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0064 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0072 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0054 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0078 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0063 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0087 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0059 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0108 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0051 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0076 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0056 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0091 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0052 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0081 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
 PASSED                                                                   [ 31%]
+tests/test_gpuusage.py::test_predict_and_check_gpu_usage SKIPPED (On...) [ 37%]
 tests/test_integration.py::test_root_endpoint 
 -------------------------------- live log call ---------------------------------
 INFO     httpx:_client.py:1038 HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
-PASSED                                                                   [ 37%]
+PASSED                                                                   [ 43%]
 tests/test_integration.py::test_predict_empty_text 
 -------------------------------- live log call ---------------------------------
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0061 seconds
-INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
-PASSED                                                                   [ 43%]
-tests/test_integration.py::test_predict_endpoint[I love this!-positive-love] 
--------------------------------- live log call ---------------------------------
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0057 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0094 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
 PASSED                                                                   [ 50%]
-tests/test_integration.py::test_predict_endpoint[This is terrible.-negative-terrible] 
+tests/test_integration.py::test_predict_endpoint[I love this!-positive-love] 
 -------------------------------- live log call ---------------------------------
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0064 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0092 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
 PASSED                                                                   [ 56%]
-tests/test_integration.py::test_predict_endpoint[It's okay, nothing special.-neutral-okay] 
+tests/test_integration.py::test_predict_endpoint[This is terrible.-negative-terrible] 
 -------------------------------- live log call ---------------------------------
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0127 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0080 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
 PASSED                                                                   [ 62%]
-tests/test_integration.py::test_predict_endpoint[-positive-] 
+tests/test_integration.py::test_predict_endpoint[It's okay, nothing special.-neutral-okay] 
 -------------------------------- live log call ---------------------------------
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0060 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0080 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
 PASSED                                                                   [ 68%]
-tests/test_integration.py::test_predict_endpoint[Great quality, amazing product.-invalid_sentiment-Great quality, amazing product.] 
+tests/test_integration.py::test_predict_endpoint[-positive-] 
 -------------------------------- live log call ---------------------------------
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0053 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0101 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
 PASSED                                                                   [ 75%]
-tests/test_tensorflow.py::test_model_loading SKIPPED (Only for Tenso...) [ 81%]
-tests/test_tensorflow.py::test_tensorflow_predict SKIPPED (Only for ...) [ 87%]
+tests/test_integration.py::test_predict_endpoint[Great quality, amazing product.-invalid_sentiment-Great quality, amazing product.] 
+-------------------------------- live log call ---------------------------------
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0085 seconds
+INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+PASSED                                                                   [ 81%]
+tests/test_tensorflow.py::test_model_loading SKIPPED (Only for Tenso...) [ 87%]
 tests/test_triton.py::test_triton_preprocessing PASSED                   [ 93%]
 tests/test_triton.py::test_triton_predict_endpoint 
 -------------------------------- live log call ---------------------------------
-INFO     uvicorn:triton_app.py:95 Prediction took 0.0060 seconds
+INFO     uvicorn:triton_app.py:95 Prediction took 0.0089 seconds
 INFO     httpx:_client.py:1038 HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
 PASSED                                                                   [100%]
 
 
------------------------------------------------------------------------------------- benchmark 'load_test': 4 tests ------------------------------------------------------------------------------------
-Name (time in ms)                             Min                Max              Mean            StdDev            Median               IQR            Outliers       OPS            Rounds  Iterations
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-test_predict_load[short_text_neutral]      6.6127 (1.0)      13.0322 (1.56)     8.1044 (1.05)     1.8170 (5.99)     7.7682 (1.01)     0.8728 (3.59)          1;1  123.3900 (0.95)         10           1
-test_predict_load[short_text_negative]     6.8245 (1.03)      8.6912 (1.04)     7.6843 (1.0)      0.6173 (2.04)     7.6550 (1.0)      1.1011 (4.53)          4;0  130.1355 (1.0)          10           1
-test_predict_load[long_text_positive]      7.3872 (1.12)      8.3422 (1.0)      8.0033 (1.04)     0.3032 (1.0)      8.0294 (1.05)     0.4421 (1.82)          3;0  124.9477 (0.96)         10           1
-test_predict_load[short_text_positive]     7.6068 (1.15)      8.9325 (1.07)     7.9628 (1.04)     0.3814 (1.26)     7.8662 (1.03)     0.2432 (1.0)           1;1  125.5839 (0.97)         10           1
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------- benchmark 'load_test': 4 tests -------------------------------------------------------------------------------------
+Name (time in ms)                              Min                Max               Mean            StdDev             Median               IQR            Outliers      OPS            Rounds  Iterations
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+test_predict_load[short_text_neutral]       9.8646 (1.0)      13.7662 (1.07)     11.3252 (1.01)     1.1872 (2.17)     11.2331 (1.01)     1.4661 (2.23)          3;0  88.2983 (0.99)         10           1
+test_predict_load[long_text_positive]      10.1894 (1.03)     12.9823 (1.01)     11.2031 (1.0)      0.8163 (1.49)     11.1253 (1.0)      1.0661 (1.62)          2;0  89.2608 (1.0)          10           1
+test_predict_load[short_text_negative]     10.8903 (1.10)     12.8869 (1.0)      11.7139 (1.05)     0.5465 (1.0)      11.6872 (1.05)     0.6583 (1.0)           2;0  85.3688 (0.96)         10           1
+test_predict_load[short_text_positive]     12.7817 (1.30)     16.4069 (1.27)     14.7748 (1.32)     1.3369 (2.45)     15.1648 (1.36)     2.3651 (3.59)          4;0  67.6830 (0.76)         10           1
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
---------------------------------------- benchmark 'predict_latency': 1 tests --------------------------------------
-Name (time in ms)           Min      Max     Mean   StdDev   Median      IQR  Outliers      OPS  Rounds  Iterations
--------------------------------------------------------------------------------------------------------------------
-test_predict_latency     7.7114  37.3752  28.4574  13.9904  37.1266  22.4981       2;0  35.1403       7           1
--------------------------------------------------------------------------------------------------------------------
+-------------------------------------- benchmark 'predict_latency': 1 tests --------------------------------------
+Name (time in ms)            Min      Max     Mean  StdDev   Median     IQR  Outliers      OPS  Rounds  Iterations
+------------------------------------------------------------------------------------------------------------------
+test_predict_latency     15.1793  16.4380  15.7039  0.4575  15.6105  0.4071       2;0  63.6785       5           1
+------------------------------------------------------------------------------------------------------------------
 
 Legend:
   Outliers: 1 Standard Deviation from Mean; 1.5 IQR (InterQuartile Range) from 1st Quartile and 3rd Quartile.
   OPS: Operations Per Second, computed as 1 / Mean
-================== 14 passed, 2 skipped, 2 warnings in 8.29s ===================
+======================== 14 passed, 2 skipped in 10.22s ========================
