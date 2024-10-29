@@ -23,7 +23,8 @@ MODEL_VERSION = os.getenv("MODEL_VERSION", "1")
 logger = logging.getLogger("uvicorn")
 
 # Initialize FastAPI app
-app = FastAPI()
+app = FastAPI(lifespan=lifespan)
+
 
 # Enable CORS
 app.add_middleware(
@@ -56,7 +57,7 @@ async def lifespan(app: FastAPI):
         inputs[1].set_data_from_numpy(att)
         inputs[2].set_data_from_numpy(tok)
         triton_client.infer(model_name=MODEL_NAME, inputs=inputs, outputs=outputs, model_version=MODEL_VERSION)
-        logger.info("Triton model warm-up complete")
+        logger.info("Warm-up successful, model response: %s", response.get_response())
     except Exception as e:
         logger.error(f"Error during warm-up: {e}")
 

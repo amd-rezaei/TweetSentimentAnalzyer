@@ -22,7 +22,6 @@ wait_for_port 8000
 
 # Start FastAPI for Triton client dynamically using src.app:app
 echo "Starting FastAPI server for Triton client..."
-source /opt/conda/bin/activate senta
 export PYTHONPATH="/app:${PYTHONPATH}"
 uvicorn src.app:app --host 0.0.0.0 --port 9000 --log-level info &
 

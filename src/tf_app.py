@@ -21,7 +21,8 @@ WEIGHTS_PATH = os.getenv('WEIGHTS_PATH', 'models/weights_final.h5')
 logger = logging.getLogger("uvicorn")
 
 # Initialize FastAPI app
-app = FastAPI()
+app = FastAPI(lifespan=lifespan)
+
 
 # Enable CORS
 app.add_middleware(
@@ -50,6 +51,7 @@ model = TweetSentimentModel(
 async def lifespan(app: FastAPI):
     logger.info("Starting up... warming up the model")
     model.predict("Warm-up text", "neutral")
+    logger.info(f"Warm-up prediction complete, result: {result}")
     yield  # Start serving requests
     logger.info("Shutting down...")
 

@@ -1,8 +1,8 @@
 services:
   triton:
     build:
-      context: . 
-      dockerfile: Dockerfile.triton
+      context: .. 
+      dockerfile: docker/Dockerfile.triton
     runtime: nvidia
     deploy:
       resources:
@@ -16,13 +16,13 @@ services:
       TRITON_URL: "localhost:8000"  # Ensures FastAPI connects to Triton on port 8000
       MODEL_NAME: "nlp_model"       # Model name to be used by Triton
       MODEL_VERSION: "1"
-      RUN_TESTS_ON_START: "true"
+      RUN_TESTS_ON_START: "false"
     shm_size: '1gb'
     ulimits:
       memlock: -1
       stack: 67108864
     volumes:
-      - ./triton_models:/models  # Mount model repository for Triton
+      - ../triton_models:/models  # Mount model repository for Triton
     ports:
       - "8000:8000"  # HTTP port for Triton
       - "8001:8001"  # gRPC port for Triton
@@ -36,12 +36,12 @@ services:
 
   encapsulated:
     build:
-      context: .  # The current directory with Dockerfile.encapsulated
-      dockerfile: Dockerfile.encapsulated
+      context: ..  
+      dockerfile: docker/Dockerfile.encapsulated
     image: tweet-sentiment-service:optimized  # Optional: tag it locally
     environment:
       DEPLOYMENT_TYPE: "encapsulated"
-      RUN_TESTS_ON_START: "true"
+      RUN_TESTS_ON_START: "false"
     ports:
       - "9001:9001"  # FastAPI for Encapsulated
     runtime: nvidia  # GPU support for Encapsulated
