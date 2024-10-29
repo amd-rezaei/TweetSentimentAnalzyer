@@ -2,3 +2,4 @@
 *.onnx filter=lfs diff=lfs merge=lfs -text
 *.plan filter=lfs diff=lfs merge=lfs -text
 models/weights_final.h5 filter=lfs diff=lfs merge=lfs -text
+config/pretrained-roberta-base.h5 filter=lfs diff=lfs merge=lfs -text
