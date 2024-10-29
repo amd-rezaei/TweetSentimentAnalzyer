@@ -193,6 +193,7 @@ dependencies:
   - soupsieve=2.5=pyhd8ed1ab_1
   - sqlite=3.45.3=h5eee18b_0
   - stack_data=0.6.2=pyhd8ed1ab_0
+  - tensorflow
   - termcolor=2.5.0=pyhd8ed1ab_0
   - terminado=0.18.1=pyh0d859eb_0
   - threadpoolctl=3.5.0=pyhc1e730c_0
@@ -229,7 +230,6 @@ dependencies:
   - pytest
   - pytest-benchmark
   - pip:
-      - tensorflow
       - tritonclient[http]
       - gevent
       - filelock==3.16.1

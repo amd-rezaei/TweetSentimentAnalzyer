@@ -32,6 +32,7 @@ COPY start_encapsulated.sh /app/start_encapsulated.sh
 # Expose FastAPI port
 EXPOSE 9001
 
+
 # Set permissions and entrypoint
 RUN chmod +x /app/start_encapsulated.sh
 ENTRYPOINT ["/app/start_encapsulated.sh"]
