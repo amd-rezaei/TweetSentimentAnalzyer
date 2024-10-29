@@ -8,5 +8,5 @@ scikit_learn==1.5.2
 tensorflow
 tf2onnx==1.16.1
 tokenizers==0.10.3
-transformers==4.15.0
+transformers==4.38.0
 tritonclient==2.50.0
