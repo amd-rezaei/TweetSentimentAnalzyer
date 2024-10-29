@@ -1,5 +1,5 @@
 name: "nlp_model"
-platform: "tensorrt_plan" 
+platform: "onnxruntime_onnx"
 max_batch_size: 32
 
 input [
