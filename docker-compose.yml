@@ -1,7 +1,7 @@
 services:
   triton:
     build:
-      context: .  # Assuming Dockerfile.triton is in the same directory as docker-compose.yml
+      context: . 
       dockerfile: Dockerfile.triton
     runtime: nvidia
     deploy:
