@@ -108,7 +108,7 @@ This option deploys the model directly within FastAPI, providing straightforward
 To deploy the encapsulated FastAPI service, use the following command:
 
 ```bash
-docker run --gpus all -e DEPLOYMENT_TYPE=encapsulated -p 9001:9001 tweet-sentiment-service:optimized
+docker-compose -f docker/docker-compose.yml up -d encapsulated
 ```
 
 This will start the service, making it accessible at [http://localhost:9001](http://localhost:9001).
@@ -122,17 +122,10 @@ This option deploys the model using **NVIDIA Triton Inference Server**, optimize
 To deploy the service with Triton, use the following command:
 
 ```bash
-docker run --gpus all -e DEPLOYMENT_TYPE=triton -p 8000:8000 -p 8001:8001 -p 8002:8002 -p 9000:9000 tweet-sentiment-service:optimized
+docker-compose -f docker/docker-compose.yml up -d triton
 ```
 
-In this configuration:
-
-- **Triton Server Endpoints**:
-  - **Health Check**: [http://localhost:8000/v2/health/ready](http://localhost:8000/v2/health/ready)
-  - **Model Repository**: [http://localhost:8000/v2/models](http://localhost:8000/v2/models)
-- **FastAPI Proxy**: Accessible at [http://localhost:9000](http://localhost:9000)
-
-These endpoints allow health monitoring and model management, along with the FastAPI proxy for making inference requests.
+This will start the service, making it accessible at [http://localhost:9000](http://localhost:9000)
 
 ### Docker Compose Commands
 
@@ -157,6 +150,7 @@ For streamlined deployment and management of both the encapsulated FastAPI and T
    ```
 
 ## API Usage
+Replace to "http://localhost:9000/predict" for Encapsulated version.
 
 ### Endpoints
 
@@ -205,7 +199,7 @@ In the encapsulated FastAPI container, **activate the Conda environment** first,
 docker exec -it <encapsulated_container_name> /bin/bash
 source /opt/conda/etc/profile.d/conda.sh
 conda activate senta
-pytest /app/tests
+pytest 
 ```
 
 #### 2. Triton Deployment Testing
@@ -213,22 +207,30 @@ pytest /app/tests
 For the Triton container, you can directly use `pytest` if it’s installed globally or within a virtual environment. Access the container and run:
 
 ```bash
-docker exec -it <triton_container_name> pytest /app/tests
+docker exec -it <triton_container_name> pytest
 ```
 
 This verifies the functionality of the service in both deployment environments.
 
+
 ## Performance Measurement and Optimization
 
 ### Key Optimizations
-- **Latency Measurement**: Logs response time for the `/predict` endpoint, providing data for identifying bottlenecks.
-- **Docker Image Optimization**: Multi-stage builds reduce Docker image size, improving deployment times.
-- **Model Warm-Up**: Initial inference runs at startup to minimize first-request latency.
+- **Latency Measurement**: Tracks response time for `/predict` to identify bottlenecks.
+- **Docker Image Optimization**: Multi-stage builds reduce image size and improve deployment time.
+- **Model Warm-Up**: Initial inference at startup minimizes first-request latency.
 
-#### Additional Conceptual Optimizations
-1. **Batch Processing**: Handles multiple predictions in a single batch to reduce redundant computations.
-2. **TensorRT Conversion**: Converts the model to TensorRT to improve inference speed and reduce memory consumption.
-3. **Cache Frequent Requests**: Implement caching for commonly repeated requests to reduce inference time.
+### Additional Conceptual Optimizations
+1. **Batch Processing**: Batching reduces redundant computations for high-throughput scenarios.
+2. **TensorRT Conversion**: Improves inference speed and reduces memory usage with TensorRT.
+3. **Cache Frequent Requests**: Caches common queries to reduce repeated computation.
+
+### Future Optimizations
+1. **Enhanced Concurrency and Dynamic Batching**: For Triton, enabling dynamic batching optimizes handling of high volumes of concurrent requests. FastAPI's asynchronous design already supports concurrency, but additional tuning can maximize connection limits.
+2. **Mixed Precision**: Using FP16 precision reduces memory usage and improves processing speed.
+3. **Distributed Model Serving**: Load balancing across instances or GPUs for high traffic.
+4. **Model Distillation**: Creates lighter model versions for faster inference on limited resources.
+
 
 ## Reports
 
