@@ -57,6 +57,7 @@ The **Tweet Sentiment Extraction Service** provides an API for extracting sentim
 - **CUDA-compatible GPU** for Dockerized GPU acceleration 
 - **CUDA Toolkit** compatible with TensorFlow and Triton, tested on Cuda11.8
 - **Docker** and **NVIDIA Docker** for GPU support
+- **Docker Compose**
 
 ## Setup
 
@@ -92,10 +93,21 @@ The project uses two Dockerfiles: `Dockerfile.encapsulated` for a direct FastAPI
   - Installs `supervisor` for service management and creates a Python virtual environment for dependencies.
   - Entrypoint: `start_triton.sh`, which starts the Triton server and the FastAPI proxy.
 
+1. **Built from scratch**
+
 To build the images using Docker Compose:
 ```bash
 docker-compose -f docker/docker-compose.yml up --build
 ```
+
+2. **Use available images**
+
+Pull Images: 
+   ```bash
+   docker pull ahmadrezaei96/triton:latest
+   docker pull ahmadrezaei96/encapsulated:latest
+   ```
+
 
 ## Running the Service
 

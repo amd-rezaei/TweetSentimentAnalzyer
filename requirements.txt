@@ -9,3 +9,5 @@ gevent
 geventhttpclient
 tokenizers
 tritonclient[all]
+tensorflow
+
