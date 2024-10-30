@@ -10,5 +10,5 @@ requests
 grpcio
 gevent
 geventhttpclient
-tritonclient[grpc]
+tritonclient
 tokenizers

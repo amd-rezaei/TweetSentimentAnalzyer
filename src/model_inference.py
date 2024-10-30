@@ -5,12 +5,6 @@ from transformers import RobertaConfig, TFRobertaModel
 from tensorflow.python.compiler.tensorrt import trt_convert as trt
 from .utils import get_selected_text_from_logits, preprocess_text
 
-# Check for available GPUs
-gpus = tf.config.list_physical_devices('GPU')
-if gpus:
-    print(f"GPUs detected: {[gpu.name for gpu in gpus]}")
-else:
-    print("No GPU detected!")
 
 class TweetSentimentModel:
     def __init__(self, model_path, config_path, tokenizer_path, merges_path, weights_path, max_len=96):
