@@ -4,10 +4,6 @@
 source /opt/conda/etc/profile.d/conda.sh
 conda activate senta
 
-
-
-export DOCKER_DEFAULT_RUNTIME=nvidia
-
 # Function to wait for a specific port to be ready
 wait_for_port() {
   local PORT=$1
