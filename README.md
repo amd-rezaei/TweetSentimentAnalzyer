@@ -42,20 +42,20 @@ The **Tweet Sentiment Extraction Service** provides an API for extracting sentim
 │   └── Dockerfile.triton    # Dockerfile for Triton-based deployment
 ├── environment.yml          # Conda environment file for encapsulated setup
 ├── models                   # Pre-trained model weights
-├── report                   # Test and benchmark reports
+├── report                   # Test and benchmark reports, including Report.md
 ├── requirements.txt         # Python requirements for Triton deployment
 ├── src                      # Source code for FastAPI application and utilities
 ├── static                   # HTML UI files
-├── tests                    # Test suite for functionality and performance
+├── tests                    # Test suite for functionality and performance, includes Tests.md
 ├── triton_models            # Triton model repository
 └── utils                    # Utility scripts (e.g., for model conversion)
 ```
 
 ## Requirements
 
-- **Python 3.9**
-- **CUDA-compatible GPU** for Dockerized GPU acceleration
-- **CUDA Toolkit** compatible with TensorFlow and Triton
+- **Python 3.10**
+- **CUDA-compatible GPU** for Dockerized GPU acceleration 
+- **CUDA Toolkit** compatible with TensorFlow and Triton, tested on Cuda11.8
 - **Docker** and **NVIDIA Docker** for GPU support
 
 ## Setup
@@ -210,7 +210,7 @@ For the Triton container, you can directly use `pytest` if it’s installed glob
 docker exec -it <triton_container_name> pytest
 ```
 
-This verifies the functionality of the service in both deployment environments.
+This verifies the functionality of the service in both deployment environments. More details can be found in `tests/Tests.md`.
 
 
 ## Performance Measurement and Optimization
@@ -234,11 +234,8 @@ This verifies the functionality of the service in both deployment environments.
 
 ## Reports
 
-Performance and test reports are saved in the `report` directory:
-- **report_test_encapsulated.txt**: Results from tests in the encapsulated FastAPI deployment.
-- **report_test_triton.txt**: Results from tests in the Triton deployment.
+Performance and benchmark comparisons between TensorFlow and TensorRT can be found in `report/Report.md`, with additional test insights in `report_test_encapsulated.txt` and `report_test_triton.txt`.
 
-These reports provide detailed insights into latency, resource usage, and API accuracy.
 
 ## License
 
