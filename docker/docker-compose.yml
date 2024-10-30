@@ -1,7 +1,7 @@
 services:
   triton:
     build:
-      context: .. 
+      context: ..
       dockerfile: docker/Dockerfile.triton
     image: ahmadrezaei96/triton:latest
     runtime: nvidia
@@ -14,8 +14,8 @@ services:
               capabilities: [gpu]
     environment:
       DEPLOYMENT_TYPE: "triton"
-      TRITON_URL: "localhost:8000"  # Ensures FastAPI connects to Triton on port 8000
-      MODEL_NAME: "nlp_model"       # Model name to be used by Triton
+      TRITON_URL: "localhost:8000"        # Triton connection on port 8000
+      MODEL_NAME: "nlp_model"             # Model name for Triton
       MODEL_VERSION: "1"
       RUN_TESTS_ON_START: "false"
     shm_size: '1gb'
@@ -23,12 +23,12 @@ services:
       memlock: -1
       stack: 67108864
     volumes:
-      - ../triton_models:/models  # Mount model repository for Triton
+      - ../triton_models:/models          # Mount model repository for Triton
     ports:
-      - "8000:8000"  # HTTP port for Triton
-      - "8001:8001"  # gRPC port for Triton
-      - "8002:8002"  # Metrics port for Triton
-      - "9000:9000"  # FastAPI for Triton client
+      - "8000:8000"                       # HTTP port for Triton
+      - "8001:8001"                       # gRPC port for Triton
+      - "8002:8002"                       # Metrics port for Triton
+      - "9000:9000"                       # FastAPI for Triton client
     networks:
       - app_network
     dns:
@@ -37,15 +37,10 @@ services:
 
   encapsulated:
     build:
-      context: ..  
+      context: ..
       dockerfile: docker/Dockerfile.encapsulated
     image: ahmadrezaei96/encapsulated:latest
-    environment:
-      DEPLOYMENT_TYPE: "encapsulated"
-      RUN_TESTS_ON_START: "false"
-    ports:
-      - "9001:9001"  # FastAPI for Encapsulated
-    runtime: nvidia  # GPU support for Encapsulated
+    runtime: nvidia                     # GPU support for Encapsulated
     deploy:
       resources:
         reservations:
@@ -53,6 +48,11 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [gpu]
+    environment:
+      DEPLOYMENT_TYPE: "encapsulated"
+      RUN_TESTS_ON_START: "false"
+    ports:
+      - "9001:9001"                     # FastAPI for Encapsulated
     networks:
       - app_network
     dns:

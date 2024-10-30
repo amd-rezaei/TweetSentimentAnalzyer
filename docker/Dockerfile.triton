@@ -1,22 +1,27 @@
 # Dockerfile.triton
 
-# Use Triton Inference Server base image with Python
+# Base image: NVIDIA Triton Inference Server with Python support
 FROM nvcr.io/nvidia/tritonserver:23.03-py3
 
-# Install system dependencies and required tools
-RUN apt-get update && apt-get install -y python3-pip python3-venv wget supervisor netcat && \
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    python3-pip \
+    python3-venv \
+    wget \
+    supervisor \
+    netcat && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
 WORKDIR /app
 
-# Copy requirements.txt to install dependencies
+# Copy and install Python dependencies
 COPY requirements.txt /app/requirements.txt
 RUN python3 -m venv /app/venv && \
     /app/venv/bin/pip install --upgrade pip && \
     /app/venv/bin/pip install -r /app/requirements.txt
 
-# Set PATH to use the virtual environment's Python and pip
+# Update PATH to prioritize virtual environment's Python and pip
 ENV PATH="/app/venv/bin:$PATH"
 
 # Copy application files and directories
@@ -28,16 +33,16 @@ COPY pytest.ini /app/pytest.ini
 COPY triton_models /models
 COPY start_triton.sh /app/start_triton.sh
 
-# Expose ports for both FastAPI and Triton
+# Expose necessary ports for FastAPI and Triton Server
 EXPOSE 8000 8001 8002 9000
 
-# Set environment variables
+# Define environment variables
 ENV STATIC_DIR=/app/static \
     MODEL_PATH=/app/config/pretrained-roberta-base.h5 \
     CONFIG_PATH=/app/config/config-roberta-base.json \
     TOKENIZER_PATH=/app/config/vocab-roberta-base.json \
     MERGES_PATH=/app/config/merges-roberta-base.txt
 
-# Set permissions and entrypoint
+# Make entrypoint script executable and set entrypoint
 RUN chmod +x /app/start_triton.sh
 ENTRYPOINT ["/app/start_triton.sh"]

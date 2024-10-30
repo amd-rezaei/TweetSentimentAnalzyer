@@ -1,7 +1,7 @@
-# Use an NVIDIA CUDA base image with CUDNN for TensorFlow compatibility
+# Base image: NVIDIA CUDA with CUDNN for TensorFlow compatibility
 FROM nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu22.04
 
-# Install Miniconda for Conda environment management and essential tools
+# Install essential tools and Python 3.10
 RUN apt-get update && apt-get install -y --no-install-recommends \
     wget \
     curl \
@@ -14,25 +14,25 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python3.10-distutils \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Miniconda
+# Install Miniconda for Conda environment management
 RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /miniconda.sh && \
     bash /miniconda.sh -b -p /opt/conda && \
     rm /miniconda.sh && \
     /opt/conda/bin/conda clean --all --yes && \
     ln -s /opt/conda/bin/conda /usr/local/bin/conda
 
-# Set environment variables for CUDA and GPU support
+# Set environment variables for CUDA and Conda
 ENV CUDA_HOME=/usr/local/cuda
-ENV LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
-ENV PATH=/usr/local/cuda/bin:/opt/conda/bin:$PATH
+ENV LD_LIBRARY_PATH=${CUDA_HOME}/lib64:$LD_LIBRARY_PATH
+ENV PATH=${CUDA_HOME}/bin:/opt/conda/bin:$PATH
 
-# Copy environment.yml to container
+# Copy Conda environment file
 COPY environment.yml /app/environment.yml
 
-# Create and activate the Conda environment from environment.yml
+# Create Conda environment from environment.yml
 RUN conda env create -f /app/environment.yml && conda clean --all --yes
 
-# Configure shell to use the Conda environment by default
+# Configure the default shell to use the Conda environment
 SHELL ["conda", "run", "-n", "senta", "/bin/bash", "-c"]
 
 # Set working directory and copy application files
@@ -45,11 +45,11 @@ COPY tests /app/tests
 COPY pytest.ini /app/pytest.ini
 COPY start_encapsulated.sh /app/start_encapsulated.sh
 
-# Make entrypoint script executable
+# Make the entrypoint script executable
 RUN chmod +x /app/start_encapsulated.sh
 
-# Expose FastAPI port
+# Expose the FastAPI port
 EXPOSE 9001
 
-# Define entrypoint to execute start script
+# Define entrypoint to execute the start script
 ENTRYPOINT ["/app/start_encapsulated.sh"]

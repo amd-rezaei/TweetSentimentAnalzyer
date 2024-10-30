@@ -28,7 +28,7 @@ def test_predict_endpoint(text, sentiment, expected_substr):
     payload = {"text": text, "sentiment": sentiment}
     response = client.post("/predict", json=payload)
     
-    assert response.status_code == 200  # Check that the status code is 200 for all cases
+    assert response.status_code == 200 
     data = response.json()
     
     if sentiment == "invalid_sentiment":
