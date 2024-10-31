@@ -1,5 +1,5 @@
 
-# Tweet Sentiment Extraction Service
+# Tweet Sentiment Analyzer Service
 
 A FastAPI-based web service that deploys a pre-trained sentiment extraction model from the Kaggle "Tweet Sentiment Extraction" competition. This service offers two deployment options:
 - **Encapsulated FastAPI**: Deploys the model directly within a FastAPI application.
