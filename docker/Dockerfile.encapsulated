@@ -30,7 +30,16 @@ ENV PATH=${CUDA_HOME}/bin:/opt/conda/bin:$PATH
 COPY environment.yml /app/environment.yml
 
 # Create Conda environment from environment.yml
-RUN conda env create -f /app/environment.yml && conda clean --all --yes
+RUN conda config --set always_yes yes && \
+    conda config --add channels defaults && \
+    conda config --set channel_priority strict && \
+    conda config --set report_errors false && \
+    conda config --set show_channel_urls true && \
+    conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main && \
+    conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r && \
+    conda env create -f /app/environment.yml && \
+    conda clean --all --yes
+
 
 # Configure the default shell to use the Conda environment
 SHELL ["conda", "run", "-n", "senta", "/bin/bash", "-c"]

@@ -1,6 +1,5 @@
-# test_benchmark.py
-
 import pytest
+import subprocess
 from fastapi.testclient import TestClient
 from src.app import app
 
@@ -31,3 +30,21 @@ def test_predict_load(payload, benchmark):
         assert data["selected_text"], "Expected 'selected_text' to be non-empty"
 
     benchmark.pedantic(send_request, rounds=10, iterations=1)
+
+@pytest.mark.benchmark(group="batch_test")
+def test_predict_batch(benchmark):
+    payloads = [
+        {"text": f"Text sample {i}", "sentiment": "positive"} for i in range(16)
+    ]
+
+    def send_batch():
+        responses = [
+            client.post("/predict", json=payload) for payload in payloads
+        ]
+        for response in responses:
+            assert response.status_code == 200
+            data = response.json()
+            assert "selected_text" in data
+            assert data["selected_text"], "Expected 'selected_text' to be non-empty"
+
+    benchmark.pedantic(send_batch, rounds=5, iterations=5)
